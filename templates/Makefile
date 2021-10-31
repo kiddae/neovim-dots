@@ -5,7 +5,7 @@ CC = g++
 COMPILER_FLAGS = -w
 LINKER_FLAGS = 
 
-all: $(OBJS)
+$(OBJ_NAME): $(OBJS)
 	$(CC) $(OBJS) $(COMPILER_FLAGS) $(LINKER_FLAGS) -o $(OBJ_NAME)
 
 run: $(OBJ_NAME)
