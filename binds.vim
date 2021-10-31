@@ -1,5 +1,6 @@
 "Custom commands
 command -nargs=1 Run :sp | :wincmd j | :resize 10 | :terminal <args> 
+command ExtTerm :silent !$TERMINAL -d="%:p:h" &
 
 ""Custom binds
 let mapleader = " "
@@ -27,6 +28,9 @@ nnoremap <silent> <C-s> :BufferPick<CR>
 nnoremap <leader>q :BufferClose<CR>
 nnoremap <leader>n :enew<CR>
 nnoremap <leader>r :silent !$TERMINAL -e ranger & <CR>
+nnoremap <leader>t :Run $SHELL<CR>
+nnoremap <leader>T :ExtTerm <CR>
+
 
 nnoremap Y y$
 
