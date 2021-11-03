@@ -6,6 +6,7 @@ source ~/.config/nvim/templates.vim
 
 ""plug
 source ~/.config/nvim/plug-config/airline.vim
+source ~/.config/nvim/plug-config/nvim-treesitter.vim
 "source ~/.config/nvim/plug-config/startify.vim
 source ~/.config/nvim/plug-config/dashboard.vim
 source ~/.config/nvim/plug-config/lightline.vim

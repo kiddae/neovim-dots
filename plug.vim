@@ -10,6 +10,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'noahfrederick/vim-noctu'
 Plug 'ulwlu/elly.vim'
 Plug 'joshdick/onedark.vim'
+Plug 'rakr/vim-one'
 Plug 'tomasiser/vim-code-dark'
 Plug 'cocopon/iceberg.vim'
 Plug 'sickill/vim-monokai'
@@ -37,6 +38,7 @@ Plug 'kyazdani42/nvim-web-devicons' "dependency of barbar
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "misc
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'ryanoasis/vim-devicons'
 Plug 'thaerkh/vim-indentguides'
 Plug 'jiangmiao/auto-pairs'
@@ -48,7 +50,6 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'lilydjwg/colorizer'
 Plug 'mbbill/undotree'
 Plug 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }
-Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 "Plug 'mhinz/vim-startify'
@@ -66,3 +67,4 @@ let bufferline.auto_hide = v:false
 let g:rose_pine_disable_background = v:false
 let g:rose_pine_variant = 'base'
 lua require('neoscroll').setup({easing_function = "sine"})
+let g:one_allow_italics = 1
