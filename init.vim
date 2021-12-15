@@ -3,6 +3,10 @@ source ~/.config/nvim/plug.vim
 source ~/.config/nvim/global.vim
 source ~/.config/nvim/binds.vim
 source ~/.config/nvim/templates.vim
+if filereadable(".vimrc") "source local configurations
+    source .vimrc
+    call UpdateCommands()
+endif
 
 ""plug
 source ~/.config/nvim/plug-config/airline.vim

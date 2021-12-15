@@ -38,7 +38,9 @@ Plug 'kyazdani42/nvim-web-devicons' "dependency of barbar
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "misc
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'chmp/mdnav'
+Plug 'tpope/vim-commentary'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'thaerkh/vim-indentguides'
 Plug 'jiangmiao/auto-pairs'

@@ -26,13 +26,13 @@ set lazyredraw
 set updatetime=300
 
 set exrc
-set secure
+"set secure
 
 set wildmenu
 set so=12
 set showcmd
 set noshowmode
-set cmdheight=2
+set cmdheight=1
 set termguicolors
 set cursorline
 set showtabline=2
@@ -43,7 +43,7 @@ set foldlevel=99
 
 
 ""colorscheme
-set background=dark
+set background=light
 "let g:gruvbox_italic=1
 "let g:ayucolor="light"
 """let g:gruvbox_termcolors=16
@@ -59,7 +59,7 @@ autocmd TermOpen * startinsert
 autocmd VimLeave * call set guicursor=a:ver100-blinkon
 
 "spell
-autocmd FileType {tex,rmd,markdown,pandoc} setlocal spell spelllang=fr,en_us
+autocmd FileType tex,rmd,markdown,pandoc setlocal spell spelllang=fr,en_us
 
 "remove tilde in empty lines
 let &fcs='eob: '

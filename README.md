@@ -10,4 +10,4 @@ Requires [vim-plug](https://github.com/junegunn/vim-plug) to manage plugins.
 
 ## TODO
 
-[  ] Add my keybindings to README.
++ [ ] Add my keybindings to README.

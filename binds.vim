@@ -1,12 +1,9 @@
-"Custom commands
-command -nargs=1 Run :sp | :wincmd j | :resize 10 | :terminal <args> 
-command ExtTerm :silent !$TERMINAL -d="%:p:h" &
-
-""Custom binds
+"general
 let mapleader = " "
 set timeout timeoutlen=1000 ttimeoutlen=10
 inoremap jk <Esc>
-"inoremap <C-c> <Esc>
+
+"navigation
 nnoremap <leader>o :Files<CR>
 nnoremap <leader>O :Files $HOME<CR>
 nnoremap <leader>u :UndotreeToggle<CR>
@@ -31,24 +28,114 @@ nnoremap <leader>r :silent !$TERMINAL -e ranger & <CR>
 nnoremap <leader>t :Run $SHELL<CR>
 nnoremap <leader>T :ExtTerm <CR>
 
-
 nnoremap Y y$
-
 tnoremap <Esc> <C-\><C-N>
 tnoremap jk <Esc>
 
+
+" Custom commands
+command -nargs=1 Run :sp | :wincmd j | :resize 10 | :terminal <args> 
+command ExtTerm :silent !$TERMINAL -d="%:p:h" &
 nnoremap <F10> :call asyncrun#quickfix_toggle(6)<CR>
 
-autocmd FileType tex nnoremap <buffer> <F4> :w<CR>:silent !pdflatex % -output-directory %:p:h<CR>
-autocmd FileType rmd nnoremap <buffer> <F4> :w<CR>:silent !R -e "rmarkdown::render('%',output_dir='%:p:h')"<CR>
-autocmd FileType {markdown,pandoc} nnoremap <buffer> <F4> :w<CR>:silent !pandoc -o '%:p:r.pdf' %<CR>
-"autocmd BufWritePost *.md :AsyncRun -mode=term -pos=hide pandoc -o '%:p:r.pdf' %
-autocmd FileType {cpp,ocaml} nnoremap <buffer> <F4> :Run make<CR>
-autocmd FileType java nnoremap <buffer> <F4> :w<CR>:silent !javac %<CR>
+" Compile and run
+" To change interactively, change the value of
+" b:CompileCommand/b:CompileSilent and then run :call UpdateCommands()
+" accordingly.
+let b:CompileSilent  = v:false
+let b:RunSilent = v:false
 
-autocmd FileType {rmd,tex,markdown,pandoc} nnoremap <buffer> <F5> :w<CR>:silent !setsid -f zathura '%:p:r.pdf'<CR>
-autocmd FileType python nnoremap <buffer> <F5> :w<CR>:Run python3 %<CR>
-autocmd FileType python nnoremap <buffer> <F6> :w<CR>:Run ipython -i %<CR>
-autocmd FileType java nnoremap <buffer> <F5> :w<CR>:Run java %<CR>
-autocmd FileType {cpp,ocaml} nnoremap <buffer> <F5> :w<CR>:Run make run<CR>
-"autocmd FileType cpp nnoremap <buffer> <F5> :AsyncRun make run<CR>
+autocmd Filetype markdown let b:CompileCommand = "!pandoc -o '%:p:r.pdf' %"
+autocmd Filetype java let b:CompileCommand = "javac %"
+if filereadable("./Makefile") || filereadable("./makefile")
+    let b:CompileCommand = "make"
+else
+    autocmd Filetype cpp let b:CompileCommand = "g++ %"
+    autocmd Filetype c let b:CompileCommand = "gcc %"
+endif
+
+autocmd Filetype tex,markdown,pandoc let b:RunCommand = "!setsid -f zathura '%:p:r.pdf'"
+autocmd Filetype python let b:RunCommand = "python3 %"
+autocmd Filetype java let b:RunCommand = "java %"
+autocmd Filetype cpp,c let b:RunCommand = "./%<.out"
+
+function! UpdateCommands()
+    if b:CompileSilent
+        command! -b Compile :execute "AsyncRun -post=copen" b:CompileCommand
+    else
+        command! -b Compile :execute "Run" b:CompileCommand
+    endif
+    if b:RunSilent
+        command! -b RunProgram :execute "AsyncRun -post=copen" b:RunCommand
+    else
+        command! -b RunProgram :execute "Run" b:RunCommand
+    endif
+endfunction
+
+call UpdateCommands()
+nnoremap <buffer> <F4> :w<CR>:Compile<CR>
+nnoremap <buffer> <F5> :w<CR>:RunProgram<CR>
+
+"Coc-nvim keybindings.
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Toggle explorer
+nmap <leader>e :execute 'CocCommand explorer' fnameescape(getcwd())<CR>
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)

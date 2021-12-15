@@ -1,6 +1,7 @@
 {
     "coc.preferences.formatOnSaveFiletypes": [
         "cpp",
+        "c",
         "rmd",
         "python",
         "ocaml",
@@ -27,7 +28,8 @@
     },
     // explorer
     "explorer.width": 30,
-    "explorer.previewAction.onHover": false,
+    "explorer.previewAction.onHover": "content",
+    "explorer.file.showHiddenFiles": true,
     "explorer.icon.enableNerdfont": true,
     "clangd.path": "/usr/bin/clangd"
 }
