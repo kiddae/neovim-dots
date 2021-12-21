@@ -10,7 +10,7 @@ nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
 nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
 autocmd FileType dashboard set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2
 
-highlight dashboardHeader ctermfg=215
+"highlight dashboardHeader ctermfg=215
 
 
 "let g:dashboard_custom_header = [

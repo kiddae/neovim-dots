@@ -7,6 +7,7 @@ Plug 'morhetz/gruvbox'
 Plug 'rayes0/blossom.vim'
 Plug 'AlessandroYorba/Alduin'
 Plug 'chriskempson/base16-vim'
+Plug 'TheNiteCoder/mountaineer.vim'
 Plug 'noahfrederick/vim-noctu'
 Plug 'ulwlu/elly.vim'
 Plug 'joshdick/onedark.vim'
@@ -16,7 +17,8 @@ Plug 'cocopon/iceberg.vim'
 Plug 'sickill/vim-monokai'
 Plug 'tomasr/molokai'
 Plug 'dracula/vim', { 'as': 'dracula'}
-Plug 'arcticicestudio/nord-vim'
+"Plug 'arcticicestudio/nord-vim'
+Plug 'shaunsingh/nord.nvim'
 Plug 'Jorengarenar/vim-darkness'
 Plug 'sainnhe/forest-night'
 Plug 'NLKNguyen/papercolor-theme'
@@ -45,8 +47,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'thaerkh/vim-indentguides'
 Plug 'jiangmiao/auto-pairs'
 Plug 'karb94/neoscroll.nvim'
-"Plug 'vim-pandoc/vim-pandoc'
-"Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'tpope/vim-fugitive'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'lilydjwg/colorizer'
@@ -67,6 +69,6 @@ let bufferline = {}
 let bufferline.auto_hide = v:false
 "let bufferline.icons = v:false
 let g:rose_pine_disable_background = v:false
-let g:rose_pine_variant = 'base'
+let g:rose_pine_variant = 'dawn'
 lua require('neoscroll').setup({easing_function = "sine"})
 let g:one_allow_italics = 1

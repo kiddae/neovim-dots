@@ -35,7 +35,7 @@ tnoremap jk <Esc>
 
 " Custom commands
 command -nargs=1 Run :sp | :wincmd j | :resize 10 | :terminal <args> 
-command ExtTerm :silent !$TERMINAL -d="%:p:h" &
+command ExtTerm :!$TERMINAL &
 nnoremap <F10> :call asyncrun#quickfix_toggle(6)<CR>
 
 " Compile and run

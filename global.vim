@@ -43,12 +43,12 @@ set foldlevel=99
 
 
 ""colorscheme
-set background=light
+set background=dark
 "let g:gruvbox_italic=1
 "let g:ayucolor="light"
 """let g:gruvbox_termcolors=16
 let g:onedark_terminal_italics=1
-colorscheme one
+colorscheme nord
 "set notermguicolors t_Co=256
 
 
@@ -70,3 +70,6 @@ set concealcursor=c
 
 hi! markdownItalic cterm=italic
 hi! Comment cterm=italic
+
+"accept filenames with spaces to open with `gf`
+set isfname+=32
