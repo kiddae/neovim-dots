@@ -27,8 +27,9 @@ Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 
 "status lines
 "Plug 'bling/vim-bufferline'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'romgrk/barbar.nvim'
 "Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'kyazdani42/nvim-web-devicons' "dependency of barbar
@@ -72,3 +73,5 @@ let g:rose_pine_disable_background = v:false
 let g:rose_pine_variant = 'dawn'
 lua require('neoscroll').setup({easing_function = "sine"})
 let g:one_allow_italics = 1
+lua require('lualine').setup({options = {theme = 'auto'}})
+let g:ayucolor = "light"
