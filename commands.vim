@@ -32,6 +32,9 @@ nnoremap Y y$
 tnoremap <Esc> <C-\><C-N>
 tnoremap jk <Esc>
 
+"Automatic spell mistake fix
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
 
 " Custom commands
 command -nargs=1 Run :sp | :wincmd j | :resize 10 | :terminal <args> 
@@ -45,7 +48,8 @@ nnoremap <F10> :call asyncrun#quickfix_toggle(6)<CR>
 let b:CompileSilent  = v:false
 let b:RunSilent = v:false
 
-autocmd Filetype markdown let b:CompileCommand = "!pandoc -o '%:p:r.pdf' %"
+autocmd Filetype markdown let b:CompileCommand = "pandoc -o '%:p:r.pdf' %"
+"autocmd Filetype tex let b:CompileCommand = "pdflatex % '%:p:r:.pdf'"
 autocmd Filetype java let b:CompileCommand = "javac %"
 if filereadable("./Makefile") || filereadable("./makefile")
     let b:CompileCommand = "make"
@@ -54,7 +58,7 @@ else
     autocmd Filetype c let b:CompileCommand = "gcc %"
 endif
 
-autocmd Filetype tex,markdown,pandoc let b:RunCommand = "!setsid -f zathura '%:p:r.pdf'"
+autocmd Filetype markdown,pandoc let b:RunCommand = "setsid -f zathura '%:p:r.pdf'"
 autocmd Filetype python let b:RunCommand = "python3 %"
 autocmd Filetype java let b:RunCommand = "java %"
 autocmd Filetype cpp,c let b:RunCommand = "./%<.out"
@@ -72,11 +76,15 @@ function! UpdateCommands()
     endif
 endfunction
 
+autocmd Filetype tex command! -b Compile :VimtexCompile
+autocmd Filetype tex command! -b RunProgram :VimtexView
+
+"Map to keys
 call UpdateCommands()
 nnoremap <buffer> <F4> :w<CR>:Compile<CR>
 nnoremap <buffer> <F5> :w<CR>:RunProgram<CR>
 
-"Coc-nvim keybindings.
+"coc-nvim keybindings.
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
   let col = col('.') - 1

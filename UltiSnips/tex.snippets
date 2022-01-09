@@ -1,0 +1,259 @@
+global !p
+texMathZones = ['texMathZone' + x for x in ['', 'X', 'XX', 'Env', 'EnvStarred', 'Ensured']]
+texIgnoreMathZones = ['texMathTextArg']
+
+texMathZoneIds = vim.eval('map('+str(texMathZones)+", 'hlID(v:val)')")
+
+texIgnoreMathZoneIds = vim.eval('map('+str(texIgnoreMathZones)+", 'hlID(v:val)')")
+
+ignore = texIgnoreMathZoneIds[0]
+
+
+def math():
+	synstackids = vim.eval("synstack(line('.'), col('.') - (col('.')>=2 ? 1 : 0))")
+	try:
+		first = next(i for i in reversed(synstackids) if i in texIgnoreMathZoneIds or i in texMathZoneIds)
+		return first != ignore
+	except StopIteration:
+		return False
+
+endglobal
+
+snippet beg "begin{} / end{}" bA
+\begin{$1}
+	${0:${VISUAL}}
+\end{$1}
+endsnippet
+
+snippet temph "\emph{}" iA
+\emph{${1:${VISUAL}}}$0
+endsnippet
+
+snippet tbf "\textbf{}" iA
+\textbf{${1:${VISUAL}}}$0
+endsnippet
+
+snippet tit "\textit{}" iA
+\textit{${1:${VISUAL}}}$0
+endsnippet
+
+snippet mk "Math" wA
+$${1:${VISUAL}}$`!p
+if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+    snip.rv = ' '
+else:
+    snip.rv = ''
+`$2
+endsnippet
+
+snippet dm "Math" wA
+\[
+${1:${VISUAL}}
+.\] $0
+endsnippet
+
+snippet '([A-Za-z])(\d)' "auto subscript" wrA
+`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
+endsnippet
+
+snippet '([A-Za-z])_(\d\d)' "auto subscript2" wrA
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
+endsnippet
+
+snippet sr "^2" iA
+^2
+endsnippet
+
+snippet cb "^3" iA
+^3
+endsnippet
+
+snippet pw "superscript" iA
+^{${1:${VISUAL}}}$0
+endsnippet
+
+snippet // "Fraction" iA
+\\frac{$1}{$2}$0
+endsnippet
+
+snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
+\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+endsnippet
+
+priority 1000
+snippet '^.*\)/' "() Fraction" wrA
+`!p
+stripped = match.string[:-1]
+depth = 0
+i = len(stripped) - 1
+while True:
+	if stripped[i] == ')': depth += 1
+	if stripped[i] == '(': depth -= 1
+	if depth == 0: break;
+	i -= 1
+snip.rv = stripped[0:i] + "\\frac{" + stripped[i+1:-1] + "}"
+`{$1}$0
+endsnippet
+
+snippet / "Fraction" i
+\\frac{${VISUAL}}{$1}$0
+endsnippet
+
+snippet enum "Enumerate" bA
+\begin{enumerate}
+	\item $0
+\end{enumerate}
+endsnippet
+
+snippet item "Itemize" bA
+\begin{itemize}
+	\item $0
+\end{itemize}
+endsnippet
+
+snippet desc "Description" b
+\begin{description}
+	\item[${1:${VISUAL}}] $0
+\end{description}
+endsnippet
+
+snippet table "Table environment" b
+\begin{table}[${1:htpb}]
+	\centering
+	\caption{${2:caption}}
+	\label{tab:${3:label}}
+	\begin{tabular}{${5:c}}
+	$0${5/((?<=.)c|l|r)|./(?1: & )/g}
+	\end{tabular}
+\end{table}
+endsnippet
+
+snippet fig "Figure environment" b
+\begin{figure}[${1:htpb}]
+	\centering
+	${2:\includegraphics[width=0.8\textwidth]{$3}}
+	\caption{${4:$3}}
+	\label{fig:${5:${3/\W+/-/g}}}
+\end{figure}
+endsnippet
+
+snippet => "Implies" Ai
+\implies
+endsnippet
+
+snippet =< "Implied by" Ai
+\impliedby
+endsnippet
+
+snippet iff "if and only if" Ai
+\iff
+endsnippet
+
+snippet != "Equals" iA
+\ne
+endsnippet
+
+snippet <= "Less than or equal" iA
+\le
+endsnippet
+
+snippet >= "Greater than or equal" iA
+\ge
+endsnippet
+
+snippet sq "\sqrt{}" iA
+\sqrt{${1:${VISUAL}}} $0
+endsnippet
+
+snippet EE "exists" iA
+\exists 
+endsnippet
+
+snippet AA "forall" iA
+\forall 
+endsnippet
+
+snippet xx "cross" i1
+\times
+endsnippet
+
+snippet ** "cdot" iA
+\cdot 
+endsnippet
+
+snippet ... "cdots" iA
+\cdots
+endsnippet
+
+snippet ali "Align" bA
+\begin{align*}
+	${1:${VISUAL}}
+.\end{align*}
+endsnippet
+
+snippet tikz "Tikz block" bA
+\begin{tikzpicture}
+	${1:${VISUAL}}
+\end{tikzpicture}
+endsnippet
+
+snippet == "Aligned equal" iA
+&= $1 \\\\
+endsnippet
+
+snippet bigfun "Big function" iA
+\begin{align*}
+	$1: $2 &\longrightarrow $3 \\\\
+	$4 &\longmapsto $1($4) = $0
+.\end{align*}
+endsnippet
+
+snippet RR "real" iA
+\mathbb{R}
+endsnippet
+
+snippet NN "natural" iA
+\mathbb{N}
+endsnippet
+
+snippet ZZ "integer" iA
+\mathbb{R}
+endsnippet
+
+snippet DD "decimal" iA
+\mathbb{D}
+endsnippet
+
+snippet QQ "rational" iA
+\mathbb{Q}
+endsnippet
+
+snippet sum "sum" w
+\sum_{n=${1:1}}^{${2:\infty}} ${3:a_n z^n}
+endsnippet
+
+snippet lim "limit" w
+\lim_{${1:n} \to ${2:\infty}} 
+endsnippet
+
+snippet alg "algorithmic" b
+\begin{algorithm}
+\caption{${1:caption}}\label{alg:${2:caption}}
+\begin{algorithmic}
+\Require{${3:input}}
+\Ensure{${4:output}}
+\Statex
+$0
+\end{algorithmic}
+\end{algorithm}
+endsnippet
+
+snippet %% "comment" bA
+\begin{comment}
+$0
+\end{comment}
+endsnippet
+
+snippet box "boxed" i
+\boxed{${1:${VISUAL}}}
+endsnippet

@@ -1,20 +1,10 @@
-""global
-source ~/.config/nvim/plug.vim
-source ~/.config/nvim/global.vim
-source ~/.config/nvim/binds.vim
-source ~/.config/nvim/templates.vim
+source ~/.config/nvim/plugins.vim "uses plug.vim
+source ~/.config/nvim/global.vim "global options
+source ~/.config/nvim/commands.vim "custom commands and keybindings
+source ~/.config/nvim/templates.vim "templates
 if filereadable(".vimrc") "source local configurations
     source .vimrc
     call UpdateCommands()
 endif
 
-""plug
-source ~/.config/nvim/plug-config/airline.vim
-source ~/.config/nvim/plug-config/nvim-treesitter.vim
-"source ~/.config/nvim/plug-config/startify.vim
-source ~/.config/nvim/plug-config/dashboard.vim
-source ~/.config/nvim/plug-config/lightline.vim
-source ~/.config/nvim/plug-config/coc.vim
-source ~/.config/nvim/plug-config/fzf.vim
-source ~/.config/nvim/plug-config/asyncrun.vim
-source ~/.config/nvim/plug-config/bufferline.vim
+"" Files in the plugin/ directory are sourced automatically.

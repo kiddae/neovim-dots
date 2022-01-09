@@ -1,4 +1,3 @@
-
 ""Templates
 if has("autocmd")
     augroup templates

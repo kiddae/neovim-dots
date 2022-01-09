@@ -41,6 +41,8 @@ Plug 'kyazdani42/nvim-web-devicons' "dependency of barbar
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "misc
+Plug 'SirVer/ultisnips'
+Plug 'lervag/vimtex'
 Plug 'chmp/mdnav'
 Plug 'tpope/vim-commentary'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -75,3 +77,9 @@ lua require('neoscroll').setup({easing_function = "sine"})
 let g:one_allow_italics = 1
 lua require('lualine').setup({options = {theme = 'auto'}})
 let g:ayucolor = "light"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+let g:tex_flavor = 'latex'
+let g:vimtex_syntax_conceal_disable = 0
+let g:vimtex_view_method = 'zathura'
