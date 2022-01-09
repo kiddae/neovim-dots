@@ -5,10 +5,22 @@
 \usepackage{lmodern}
 \usepackage{fullpage}
 \usepackage[french] {babel}
-\usepackage{amsmath, amssymb, amsfonts, mathtools, esvect}
+\usepackage{amsmath, amssymb, amsfonts, mathtools, esvect, amsthm}
 \usepackage{tikz}
 \usepackage{algorithm, algpseudocode}
 \usepackage{comment}
+
+\newtheorem{theorem}{Theorem} [section]
+\newtheorem{corollary}{Corollary} [theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition} [section]
+
+% The 'proof' environment is defined in asmthm.
 
 \title{Title}
 \author{Louise NGUYEN}
