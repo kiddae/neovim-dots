@@ -22,6 +22,7 @@ Plug 'ayu-theme/ayu-vim'
     let g:ayucolor = "light"
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'catppuccin/nvim', {'as': 'catppuccin', 'branch': 'main'}
+Plug 'mangeshrex/everblush.vim'
 
 "status lines
 Plug 'nvim-lualine/lualine.nvim'
