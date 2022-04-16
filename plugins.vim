@@ -21,6 +21,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'ayu-theme/ayu-vim'
     let g:ayucolor = "light"
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'catppuccin/nvim', {'as': 'catppuccin', 'branch': 'main'}
 
 "status lines
 Plug 'nvim-lualine/lualine.nvim'

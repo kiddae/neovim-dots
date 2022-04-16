@@ -36,13 +36,14 @@ set termguicolors
 set cursorline
 set showtabline=2
 autocmd BufEnter * silent! lcd %:p:h
+autocmd BufEnter * source ~/.config/nvim/commands.vim
 
 set foldmethod=indent
 set foldlevel=99
 
 
 ""colorscheme
-set background=light
+set background=dark
 "let g:gruvbox_italic=1
 "let g:ayucolor="light"
 """let g:gruvbox_termcolors=16

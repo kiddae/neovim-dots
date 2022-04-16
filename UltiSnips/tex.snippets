@@ -1,3 +1,47 @@
+snippet template "template" i 
+\documentclass{article}
+
+\usepackage[utf8] {inputenc}
+\usepackage[T1] {fontenc}
+\usepackage{lmodern}
+\usepackage{fullpage}
+\usepackage[french] {babel}
+\usepackage{amsmath, amssymb, amsfonts, mathtools, esvect, amsthm}
+\usepackage{tikz, pgfplots, tkz-tab}
+\usepackage{nicefrac}
+\usepackage{algorithm, algpseudocode}
+\usepackage{comment}
+
+\pgfplotsset{compat = newest}
+
+\newtheorem{theorem}{Théorème} [section]
+\newtheorem{corollary}{Corollaire} [theorem]
+\newtheorem{lemma}[theorem]{Lemme}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remarque}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Définition} [section]
+
+\newtheorem{prop}{Propriété} [definition]
+
+\theoremstyle{remark}
+\newtheorem{exmp}{Exemple} [definition]
+
+% The 'proof' environment is defined in asmthm.
+
+\title{Title}
+\author{Louise NGUYEN}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\end{document}
+endsnippet
 
 snippet beg "begin{} / end{}" bA
 \begin{$1}
@@ -17,6 +61,36 @@ snippet it "\textit{}" i
 \textit{${1:${VISUAL}}}$0
 endsnippet
 
+snippet plot "function graphing" i
+\begin{figure}
+\centering
+\begin{tikzpicture}
+	\begin{axis}[axis lines = $1]
+	% center, left, right...
+		\addplot[]{$5};
+		% options: color, domain
+		\addlegendentry{$6}
+	\end{axis}
+\end{tikzpicture}
+\caption{$7}
+\end{figure}
+$0
+endsnippet
+
+snippet ttab "tkz-tab" i
+\begin{figure}
+\centering
+\begin{tikzpicture}
+	\tkzTabInit{${1:$x$ / 1, $f(x)$ / 1}}{$2}
+	% second list are the elements on the first lines
+	\tkzTabLine{$3}
+	% line: d -> interdiction line, t -> dotted line, z -> zero w/ line, h -> forbidden zone, +, -, <space>
+	\tkzTabVar{$4}
+	% sign / expression
+\end{tikzpicture}
+\caption{$5}
+\end{figure}
+endsnippet
 
 snippet enum "Enumerate" bA
 \begin{enumerate}
@@ -137,11 +211,11 @@ snippet / "Fraction" i
 endsnippet
 
 snippet => "Implies" Ai
-\implies
+\implies 
 endsnippet
 
 snippet =< "Implied by" Ai
-\impliedby
+\impliedby 
 endsnippet
 
 snippet iff "if and only if" i
@@ -149,15 +223,15 @@ snippet iff "if and only if" i
 endsnippet
 
 snippet != "Equals" iA
-\ne
+\ne 
 endsnippet
 
 snippet <= "Less than or equal" iA
-\le
+\le 
 endsnippet
 
 snippet >= "Greater than or equal" iA
-\ge
+\ge 
 endsnippet
 
 snippet sq "\sqrt{}" i
@@ -169,7 +243,7 @@ snippet EE "exists" iA
 endsnippet
 
 snippet AA "forall" iA
-\forall 
+\forall  
 endsnippet
 
 snippet xx "cross" iA
@@ -181,7 +255,7 @@ snippet ** "cdot" iA
 endsnippet
 
 snippet ... "cdots" iA
-\cdots
+\cdots 
 endsnippet
 
 snippet ali "Align" bA
@@ -191,14 +265,7 @@ snippet ali "Align" bA
 endsnippet
 
 snippet == "Aligned equal" iA
-&= $1 \\\\
-endsnippet
-
-snippet bigfun "Big function" iA
-\begin{align*}
-	$1: $2 &\longrightarrow $3 \\\\
-	$4 &\longmapsto $1($4) = $0
-.\end{align*}
+&= $1
 endsnippet
 
 snippet RR "real" iA
@@ -255,6 +322,18 @@ endsnippet
 
 snippet mbb "\mathbb{}" iA
 \mathbb{${1:${VISUAL}}}$0
+endsnippet
+
+snippet SI "SI unit" iA
+\SI{${1:${VISUAL}}}$0
+endsnippet
+
+snippet mbb "\mathbb{}" iA
+\mathbb{${1:${VISUAL}}} $0
+endsnippet
+
+snippet mcal "\mathcal{}" iA
+\mathbb{${1:${VISUAL}}} $0
 endsnippet
 
 snippet thm "Theorem" bA

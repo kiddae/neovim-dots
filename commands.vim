@@ -48,20 +48,8 @@ nnoremap <F10> :call asyncrun#quickfix_toggle(6)<CR>
 let b:CompileSilent  = v:false
 let b:RunSilent = v:false
 
-autocmd Filetype markdown let b:CompileCommand = "pandoc -o '%:p:r.pdf' %"
-"autocmd Filetype tex let b:CompileCommand = "pdflatex % '%:p:r:.pdf'"
-autocmd Filetype java let b:CompileCommand = "javac %"
-if filereadable("./Makefile") || filereadable("./makefile")
-    let b:CompileCommand = "make"
-else
-    autocmd Filetype cpp let b:CompileCommand = "g++ %"
-    autocmd Filetype c let b:CompileCommand = "gcc %"
-endif
-
-autocmd Filetype markdown,pandoc let b:RunCommand = "setsid -f zathura '%:p:r.pdf'"
-autocmd Filetype python let b:RunCommand = "python3 %"
-autocmd Filetype java let b:RunCommand = "java %"
-autocmd Filetype cpp,c let b:RunCommand = "./%<.out"
+" Individual settings for CompileCommand are set in the according ftplugin
+" files.
 
 function! UpdateCommands()
     if b:CompileSilent
