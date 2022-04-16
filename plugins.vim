@@ -30,7 +30,7 @@ Plug 'kyazdani42/nvim-web-devicons' "dependency of barbar
 
 "completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-vimlsp', 'coc-explorer', 'coc-pyright', 'coc-discord-rpc', 'coc-clangd', 'coc-vimtex', 'coc-markdownlint', 'coc-snippets']
+    let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-vimlsp', 'coc-explorer', 'coc-pyright', 'coc-discord-rpc', 'coc-clangd', 'coc-vimtex', 'coc-markdownlint', 'coc-snippets', 'coc-html', 'coc-css', 'coc-tsserver']
 
 "misc
 Plug 'SirVer/ultisnips'

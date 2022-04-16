@@ -48,7 +48,7 @@ set background=dark
 "let g:ayucolor="light"
 """let g:gruvbox_termcolors=16
 let g:onedark_terminal_italics=1
-colorscheme nord
+colorscheme one
 "set notermguicolors t_Co=256
 
 
