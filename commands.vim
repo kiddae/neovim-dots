@@ -8,11 +8,11 @@ nnoremap <leader>o :Files<CR>
 nnoremap <leader>O :Files $HOME<CR>
 nnoremap <leader>u :UndotreeToggle<CR>
 
-nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>j :wincmd j<CR>
-nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>l :wincmd l<CR>
-nnoremap <leader>w :wincmd w<CR>
+nnoremap <C-h> :wincmd h<CR>
+nnoremap <C-j> :wincmd j<CR>
+nnoremap <C-k> :wincmd k<CR>
+nnoremap <C-l> :wincmd l<CR>
+nnoremap <C-w> :wincmd w<CR>
 nnoremap <leader>+ :vertical resize +5<CR>
 nnoremap <leader>- :vertical resize -5<CR>
 nnoremap <leader>> :vertical resize >5<CR>
@@ -22,10 +22,10 @@ nnoremap <leader>= :winc =<CR>
 nnoremap <S-tab> :BufferPrevious<CR>
 nnoremap <tab> :BufferNext<CR>
 nnoremap <silent> <C-s> :BufferPick<CR>
-nnoremap <leader>q :BufferClose<CR>
-nnoremap <leader>n :enew<CR>
+nnoremap <C-q> :bdelete<CR>
+nnoremap <C-n> :enew<CR>
 nnoremap <leader>r :silent !$TERMINAL -e ranger & <CR>
-nnoremap <leader>t :Run $SHELL<CR>
+nnoremap <leader>t :RunSplit $SHELL<CR>
 nnoremap <leader>T :ExtTerm <CR>
 
 nnoremap Y y$
@@ -37,7 +37,7 @@ inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 
 " Custom commands
-command -nargs=1 Run :sp | :wincmd j | :resize 10 | :terminal <args> 
+command -nargs=1 RunSplit :vsp | :wincmd l | :vertical resize 50% | :terminal <args> 
 command ExtTerm :!$TERMINAL &
 nnoremap <F10> :call asyncrun#quickfix_toggle(6)<CR>
 
@@ -55,22 +55,20 @@ function! UpdateCommands()
     if b:CompileSilent
         command! -b Compile :execute "AsyncRun -post=copen" b:CompileCommand
     else
-        command! -b Compile :execute "Run" b:CompileCommand
+        command! -b Compile :execute "RunSplit" b:CompileCommand
     endif
     if b:RunSilent
         command! -b RunProgram :execute "AsyncRun -post=copen" b:RunCommand
     else
-        command! -b RunProgram :execute "Run" b:RunCommand
+        command! -b RunProgram :execute "RunSplit" b:RunCommand
     endif
 endfunction
 
-autocmd Filetype tex command! -b Compile :VimtexCompile
-autocmd Filetype tex command! -b RunProgram :VimtexView
 
 "Map to keys
 call UpdateCommands()
-nnoremap <buffer> <F4> :w<CR>:Compile<CR>
-nnoremap <buffer> <F5> :w<CR>:RunProgram<CR>
+nnoremap <buffer> <leader><F4> :w<CR>:Compile<CR>
+nnoremap <buffer> <leader><F5> :w<CR>:RunProgram<CR>
 
 "coc-nvim keybindings.
 " use <tab> for trigger completion and navigate to the next complete item
@@ -126,7 +124,7 @@ xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
 " Toggle explorer
-nmap <leader>e :execute 'CocCommand explorer' fnameescape(getcwd())<CR>
+nmap <C-e> :execute 'CocCommand explorer' fnameescape(getcwd())<CR>
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -135,3 +133,16 @@ command! -nargs=0 Format :call CocAction('format')
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'

@@ -1,3 +1,4 @@
+filetype plugin indent on
 syntax on
 
 set hidden
@@ -62,7 +63,7 @@ autocmd VimLeave * call set guicursor=a:ver100-blinkon
 autocmd FileType tex,rmd,markdown,pandoc setlocal spell spelllang=fr,en_us
 
 "remove tilde in empty lines
-"let &fcs='eob: '
+let &fcs='eob: '
 
 set conceallevel=1
 set concealcursor=c

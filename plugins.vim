@@ -19,7 +19,7 @@ Plug 'shaunsingh/nord.nvim'
 Plug 'sainnhe/forest-night'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'ayu-theme/ayu-vim'
-    let g:ayucolor = "light"
+    let g:ayucolor = "dark"
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'catppuccin/nvim', {'as': 'catppuccin', 'branch': 'main'}
 Plug 'mangeshrex/everblush.vim'
@@ -32,6 +32,9 @@ Plug 'kyazdani42/nvim-web-devicons' "dependency of barbar
 "completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
     let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-vimlsp', 'coc-explorer', 'coc-pyright', 'coc-discord-rpc', 'coc-clangd', 'coc-vimtex', 'coc-markdownlint', 'coc-snippets', 'coc-html', 'coc-css', 'coc-tsserver']
+" Plug 'mfussenegger/nvim-dap'
+" Plug 'mfussenegger/nvim-dap-python'
+Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
 
 "misc
 Plug 'SirVer/ultisnips'
@@ -66,3 +69,4 @@ call plug#end()
 
 lua require('lualine').setup({options = {theme = 'auto'}})
 lua require('neoscroll').setup({easing_function = "sine"})
+" lua require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')

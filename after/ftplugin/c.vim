@@ -4,7 +4,7 @@ setlocal softtabstop=2
 if filereadable("./Makefile") || filereadable("./makefile")
     let b:CompileCommand = "make"
 else
-    let b:CompileCommand = "gcc % -o %<"
+    let b:CompileCommand = "gcc -g -w % -o %<"
 endif
 let b:RunCommand = "./%<"
 call UpdateCommands()
