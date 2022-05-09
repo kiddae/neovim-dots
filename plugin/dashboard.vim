@@ -1,4 +1,4 @@
-let g:dashboard_default_executive='fzf'
+let g:dashboard_default_executive='telescope'
 let g:dashboard_default_header='pikachu'
 nmap <Leader>ss :<C-u>SessionSave<CR>
 nmap <Leader>sl :<C-u>SessionLoad<CR>

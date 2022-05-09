@@ -19,19 +19,21 @@ Plug 'shaunsingh/nord.nvim'
 Plug 'sainnhe/forest-night'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'ayu-theme/ayu-vim'
-    let g:ayucolor = "dark"
+    let g:ayucolor = "light"
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'catppuccin/nvim', {'as': 'catppuccin', 'branch': 'main'}
 Plug 'mangeshrex/everblush.vim'
 
 "status lines
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'romgrk/barbar.nvim'
+" Plug 'romgrk/barbar.nvim'
+Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'kyazdani42/nvim-web-devicons' "dependency of barbar
+Plug 'kyazdani42/nvim-tree.lua'
 
 "completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-vimlsp', 'coc-explorer', 'coc-pyright', 'coc-discord-rpc', 'coc-clangd', 'coc-vimtex', 'coc-markdownlint', 'coc-snippets', 'coc-html', 'coc-css', 'coc-tsserver']
+    let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-vimlsp', 'coc-pyright', 'coc-discord-rpc', 'coc-clangd', 'coc-vimtex', 'coc-markdownlint', 'coc-snippets', 'coc-html', 'coc-css', 'coc-tsserver']
 " Plug 'mfussenegger/nvim-dap'
 " Plug 'mfussenegger/nvim-dap-python'
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
@@ -41,6 +43,7 @@ Plug 'SirVer/ultisnips'
     let g:UltiSnipsExpandTrigger="<tab>"
     let g:UltiSnipsJumpForwardTrigger="<tab>"
     let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+Plug 'folke/which-key.nvim'
 Plug 'lervag/vimtex'
     let g:tex_flavor = 'latex'
     let g:vimtex_syntax_conceal_disable = 0
@@ -51,22 +54,30 @@ Plug 'KeitaNakamura/tex-conceal.vim'
     let g:tex_conceal = 'abdmg'
     hi Conceal ctermbg = none
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'thaerkh/vim-indentguides'
+    let g:indentguides_ignorelist = ['help']
 Plug 'jiangmiao/auto-pairs'
 Plug 'karb94/neoscroll.nvim'
 Plug 'tpope/vim-fugitive'
-Plug 'powerman/vim-plugin-AnsiEsc'
+" Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'lilydjwg/colorizer'
     let g:colorizer_nomap = 1
 Plug 'mbbill/undotree'
-Plug 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'glepnir/dashboard-nvim'
 Plug 'skywind3000/asyncrun.vim'
 
 call plug#end()
 
-lua require('lualine').setup({options = {theme = 'auto'}})
+lua require('lualine').setup({options = {theme = 'auto', section_separators = { left = '', right = '' }, component_separators = { left = '', right = '' }, globalstatus = true}})
 lua require('neoscroll').setup({easing_function = "sine"})
 " lua require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+lua require('bufferline').setup()
+lua require('nvim-tree').setup()
+lua require('which-key').setup()
+lua require('telescope').setup()

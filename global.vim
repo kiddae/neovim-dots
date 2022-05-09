@@ -9,6 +9,7 @@ set expandtab
 set smartindent
 set linebreak
 set updatetime=300
+set signcolumn=number
 
 set nu
 set rnu
@@ -37,7 +38,7 @@ set termguicolors
 set cursorline
 set showtabline=2
 autocmd BufEnter * silent! lcd %:p:h
-autocmd BufEnter * source ~/.config/nvim/commands.vim
+autocmd BufEnter * so ~/.config/nvim/commands.vim
 
 set foldmethod=indent
 set foldlevel=99
@@ -49,18 +50,18 @@ set background=dark
 "let g:ayucolor="light"
 """let g:gruvbox_termcolors=16
 let g:onedark_terminal_italics=1
-colorscheme everblush
+colorscheme ayu
 "set notermguicolors t_Co=256
-
 
 "set terminal automatically in insert mode
 autocmd TermOpen * startinsert
 
 "reset the terminal cursor when leaving
-autocmd VimLeave * call set guicursor=a:ver100-blinkon
+autocmd VimLeave * set guicursor=a:ver100
 
 "spell
-autocmd FileType tex,rmd,markdown,pandoc setlocal spell spelllang=fr,en_us
+autocmd FileType gitcommit,tex,rmd,markdown,pandoc setlocal spell spelllang=fr,en_us
+set complete+=kspell
 
 "remove tilde in empty lines
 let &fcs='eob: '

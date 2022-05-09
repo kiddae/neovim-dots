@@ -1,7 +1,7 @@
 "general
 let mapleader = " "
 set timeout timeoutlen=1000 ttimeoutlen=10
-inoremap jk <Esc>
+" inoremap jk <Esc>
 
 "navigation
 nnoremap <leader>o :Files<CR>
@@ -12,33 +12,41 @@ nnoremap <C-h> :wincmd h<CR>
 nnoremap <C-j> :wincmd j<CR>
 nnoremap <C-k> :wincmd k<CR>
 nnoremap <C-l> :wincmd l<CR>
+nnoremap <leader>h :wincmd H<CR>
+nnoremap <leader>j :wincmd J<CR>
+nnoremap <leader>k :wincmd K<CR>
+nnoremap <leader>l :wincmd L<CR>
 nnoremap <C-w> :wincmd w<CR>
 nnoremap <leader>+ :vertical resize +5<CR>
 nnoremap <leader>- :vertical resize -5<CR>
 nnoremap <leader>> :vertical resize >5<CR>
 nnoremap <leader>< :vertical resize <5<CR>
 nnoremap <leader>= :winc =<CR>
+nnoremap <leader><F1> :WhichKey<CR>
+nnoremap <leader>vr :so $MYVIMRC<CR>
 
-nnoremap <S-tab> :BufferPrevious<CR>
-nnoremap <tab> :BufferNext<CR>
+nnoremap <S-tab> :bp<CR>
+nnoremap <tab> :bn<CR>
 nnoremap <silent> <C-s> :BufferPick<CR>
 nnoremap <C-q> :bdelete<CR>
 nnoremap <C-n> :enew<CR>
-nnoremap <leader>r :silent !$TERMINAL -e ranger & <CR>
+nnoremap <leader>r :RunSplit ranger<CR>
 nnoremap <leader>t :RunSplit $SHELL<CR>
 nnoremap <leader>T :ExtTerm <CR>
 
 nnoremap Y y$
 tnoremap <Esc> <C-\><C-N>
-tnoremap jk <Esc>
 
 "Automatic spell mistake fix
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
+" explorer
+nmap <C-n> :NvimTreeToggle<CR>
+
 
 " Custom commands
-command -nargs=1 RunSplit :vsp | :wincmd l | :vertical resize 50% | :terminal <args> 
-command ExtTerm :!$TERMINAL &
+command -nargs=1 RunSplit :vsp | :wincmd l | :vertical resize 80% | :terminal <args> 
+command ExtTerm :silent !$TERMINAL &
 nnoremap <F10> :call asyncrun#quickfix_toggle(6)<CR>
 
 " Compile and run
@@ -122,9 +130,6 @@ xmap ic <Plug>(coc-classobj-i)
 omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
-
-" Toggle explorer
-nmap <C-e> :execute 'CocCommand explorer' fnameescape(getcwd())<CR>
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
