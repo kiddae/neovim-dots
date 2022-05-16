@@ -3,3 +3,4 @@ command! -b RunProgram :VimtexView
 call UpdateCommands()
 nnoremap <buffer> <leader><F4> :VimtexCompile<CR>
 nnoremap <buffer> <leader><F5> :VimtexView<CR>
+nnoremap <buffer> <leader>t :VimtexTocToggle<CR>
