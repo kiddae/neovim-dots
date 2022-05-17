@@ -1,27 +1,27 @@
 " --- Plug.vim --- "
 
 call plug#begin(stdpath('data') . '/plugged')
-
-"colorschemes
+"" COLORSCHEMES
 Plug 'rose-pine/neovim'
     let g:rose_pine_disable_background = v:false
     let g:rose_pine_variant = 'dawn'
 Plug 'morhetz/gruvbox'
 Plug 'rakr/vim-one'
     let g:one_allow_italics = 1
+Plug 'projekt0n/github-nvim-theme'
 Plug 'shaunsingh/nord.nvim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'ayu-theme/ayu-vim'
-    let g:ayucolor = "light"
+    let g:ayucolor = "dark"
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'mangeshrex/everblush.vim'
-" Plug 'catppuccin/nvim', {'as': 'catppuccin', 'branch': 'main'}
-" Plug 'AlessandroYorba/Alduin'
+Plug 'catppuccin/nvim', {'as': 'catppuccin', 'branch': 'main'}
+Plug 'AlessandroYorba/Alduin'
+Plug 'TheNiteCoder/mountaineer.vim'
+Plug 'ulwlu/elly.vim'
+Plug 'dracula/vim', { 'as': 'dracula'}
+Plug 'sainnhe/forest-night'
 " Plug 'chriskempson/base16-vim'
-" Plug 'TheNiteCoder/mountaineer.vim'
-" Plug 'ulwlu/elly.vim'
-" Plug 'dracula/vim', { 'as': 'dracula'}
-" Plug 'sainnhe/forest-night'
 
 "" STATUS LINES
 Plug 'nvim-lualine/lualine.nvim'
@@ -49,7 +49,6 @@ Plug 'rcarriga/nvim-dap-ui'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'glepnir/dashboard-nvim'
-" Plug 'mfussenegger/nvim-dap-python'
 " Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "     let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-vimlsp', 'coc-pyright', 'coc-discord-rpc', 'coc-clangd', 'coc-vimtex', 'coc-markdownlint', 'coc-snippets', 'coc-html', 'coc-css', 'coc-tsserver']
@@ -71,7 +70,7 @@ Plug 'tpope/vim-surround'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'thaerkh/vim-indentguides'
-    let g:indentguides_ignorelist = ['help']
+    let g:indentguides_ignorelist = ['help', 'dashboard']
 Plug 'jiangmiao/auto-pairs'
 Plug 'karb94/neoscroll.nvim'
 Plug 'tpope/vim-fugitive'
@@ -80,16 +79,13 @@ Plug 'lilydjwg/colorizer'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'mbbill/undotree'
+Plug 'fladson/vim-kitty'
 " Plug 'powerman/vim-plugin-AnsiEsc'
 " Plug 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }
-
 call plug#end()
 
 lua require('lualine').setup({options = {theme = 'auto', section_separators = { left = '', right = '' }, component_separators = { left = '', right = '' }, globalstatus = true}})
-lua require('neoscroll').setup({easing_function = "sine"})
-" lua require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
-lua require('bufferline').setup()
-lua require('nvim-tree').setup()
+lua require('neoscroll').setup()
 lua require('which-key').setup()
 lua require('telescope').setup()
 lua require('nvim-lsp-installer').setup({ automatic_installation = true })

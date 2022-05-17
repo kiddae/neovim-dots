@@ -38,7 +38,9 @@ set termguicolors
 set cursorline
 set showtabline=2
 autocmd BufEnter * silent! lcd %:p:h
-autocmd BufEnter * so ~/.config/nvim/commands.vim
+autocmd BufEnter * call UpdateCommands()
+"source local configurations
+autocmd BufEnter * if filereadable(".vimrc") | source .vimrc | call UpdateCommands() | endif
 
 set foldmethod=indent
 set foldlevel=99
@@ -46,12 +48,7 @@ set foldlevel=99
 
 ""colorscheme
 set background=dark
-"let g:gruvbox_italic=1
-"let g:ayucolor="light"
-"""let g:gruvbox_termcolors=16
-let g:onedark_terminal_italics=1
 colorscheme ayu
-"set notermguicolors t_Co=256
 
 "set terminal automatically in insert mode
 autocmd TermOpen * startinsert

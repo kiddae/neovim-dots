@@ -8,15 +8,15 @@ nnoremap <leader>o :Files<CR>
 nnoremap <leader>O :Files $HOME<CR>
 nnoremap <leader>u :UndotreeToggle<CR>
 
-nnoremap <C-h> :wincmd h<CR>
+nnoremap <C-h> :wincmd h<CR>  "navigates
 nnoremap <C-j> :wincmd j<CR>
 nnoremap <C-k> :wincmd k<CR>
 nnoremap <C-l> :wincmd l<CR>
-nnoremap <leader>h :wincmd H<CR>
+nnoremap <C-w> :wincmd w<CR>
+nnoremap <leader>h :wincmd H<CR> "moves
 nnoremap <leader>j :wincmd J<CR>
 nnoremap <leader>k :wincmd K<CR>
 nnoremap <leader>l :wincmd L<CR>
-nnoremap <C-w> :wincmd w<CR>
 nnoremap <leader>+ :vertical resize +5<CR>
 nnoremap <leader>- :vertical resize -5<CR>
 nnoremap <leader>> :vertical resize >5<CR>
@@ -50,31 +50,24 @@ command ExtTerm :silent !$TERMINAL &
 nnoremap <F10> :call asyncrun#quickfix_toggle(6)<CR>
 
 " Compile and run
-" To change interactively, change the value of
-" b:CompileCommand/b:CompileSilent and then run :call UpdateCommands()
-" accordingly.
-let b:CompileSilent  = v:false
-let b:RunSilent = v:false
-
-" Individual settings for CompileCommand are set in the according ftplugin
-" files.
+" Rules for each filetype: Rules.filetype = {'compile': "<cmd>", 'run': "<cmd>", 'silent': v:true|v:false}
+" If adding/updating interactively, 
+let g:Rules = {}
+let g:Rules.python = {"compile": "", "run": "python %", "silent": v:false}
+let g:Rules.cpp = {"compile": "make", "run": "./%<", "silent": v:false}
+let g:Rules.c = g:Rules.cpp
 
 function! UpdateCommands()
-    if b:CompileSilent
-        command! -b Compile :execute "AsyncRun -post=copen" b:CompileCommand
-    else
-        command! -b Compile :execute "RunSplit" b:CompileCommand
+    if !has_key(g:Rules, &ft)
+        return
     endif
-    if b:RunSilent
-        command! -b RunProgram :execute "AsyncRun -post=copen" b:RunCommand
+    if get(g:Rules, &ft).silent
+        command! -buffer Compile :execute "AsyncRun -post=copen " .. get(g:Rules, &ft).compile
     else
-        command! -b RunProgram :execute "RunSplit" b:RunCommand
+        command! -buffer Compile :execute "RunSplit " .. get(g:Rules, &ft).compile
     endif
+    command! -buffer RunProgram :execute "RunSplit " .. get(g:Rules, &ft).run
+    nnoremap <buffer> <leader><F4> :w<CR>:Compile<CR>
+    nnoremap <buffer> <leader><F5> :w<CR>:RunProgram<CR>
 endfunction
-
-
-"Map to keys
 call UpdateCommands()
-nnoremap <buffer> <leader><F4> :w<CR>:Compile<CR>
-nnoremap <buffer> <leader><F5> :w<CR>:RunProgram<CR>
-
