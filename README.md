@@ -110,6 +110,16 @@ Brackets, parentheses etc. are closed automatically; to move the next word insid
 
 [`WhichKey`](https://github.com/folke/which-key.nvim) is a little menu that shows the available binding in case you forget. You can fire it up with `<leader><F1>`, or it will do it automatically if you're starting a command.
 
+### VimTex
+
+I use [`vimtex`](https://github.com/lervag/vimtex) for editing LaTeX documents, with `zathura` as a document viewer. Very simply put, just run `:VimtexCompile` when in a LaTeX document and the plugin will do the job for you. If there are errors, run `:copen` to see the messages, and then close the window with `:q` or `:cclose`.
+
 ### Snippets
 
 (Only for LaTeX as of now) A bunch of handy snippets are configured in [`Ultisnips/`](Ultisnips/) for convenient use.
+
+### Templates
+
+New `.cpp` files, `makefiles` or LaTeX document will be filled with a predefined template, to get going faster!
+Defined in [`templates/`](templates/) and in [`templates.vim`](templates.vim) (TODO ameliorate for better automation...)
+
