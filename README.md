@@ -72,6 +72,8 @@ vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()
 vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 ```
 
+Auto-completion and suggestions are provided by [`nvim-cmp`](https://github.com/hrsh7th/nvim-cmp), they will show up as you work, or you can fire it up manually with `Ctrl+space`.
+
 ## Debug-Adapter Protocol
 
 I am using [`nvim-dap`](https://github.com/mfussenegger/nvim-dap) as a bridge to using debug adapters, as well as [`nvim-dap-ui`](https://github.com/gcarriga/nvim-dap-ui) as an intuitive user interface to debugging sessions.
