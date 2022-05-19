@@ -1,8 +1,8 @@
-# Configuration files for `neovim`
+# A `neovim` configuration.
 
 To be used with my [dotfiles](https://github.com/kiddae/dotfiles)
 
-Requires `[vim-plug]`(https://github.com/junegunn/vim-plug) to manage plugins.
+Requires [`vim-plug`](https://github.com/junegunn/vim-plug) to manage plugins.
 
 # Installation
 
@@ -12,9 +12,9 @@ Clone the repository to `~/.config/nvim`. Install `vim-plug` using the command g
 
 ## Navigation
 
-Extending the normal vim keybindings, things I've added for myself can be found in `[commands.vim]`(commands.vim), mostly for managing buffers and files and navigating between windows/splits:
+Extending the normal vim keybindings, things I've added for myself can be found in [`commands.vim`](commands.vim), mostly for managing buffers and files and navigating between windows/splits:
 
-```
+```vim
 "<leader> = space
 let mapleader = " "
 nnoremap <C-h> :wincmd h<CR>  "navigates
@@ -42,7 +42,7 @@ nnoremap <C-q> :bp<bar>sp<bar>bn<bar>bd<CR>
 
 In that same [`commands.vim`](commands.vim) file, you'll find the definition of command `RunSplit` which runs the shell command given as argument in a terminal window on the right. To complete this, the global dictionary `g:Rules` contains rules for any filetypes you want, as another dictionary with the compiling command and program run command, as well as a silent flag (as a boolean) to compile with `AsyncRun`. For example (from the `commands.vim` file itself):
 
-```
+```vim
 let g:Rules.cpp = {"compile": "g++ -o %< %", "run": "./%<", "silent": v:true}
 ```
 
@@ -81,7 +81,7 @@ This requires the manual installation of the debug adapters, [`nvim-dap`'s wiki]
 
 Keybindings are the ones given as example by the plugin:
 
-```
+```vim
 nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
 nnoremap <silent> <F10> :lua require'dap'.step_over()<CR>
 nnoremap <silent> <F11> :lua require'dap'.step_into()<CR>
