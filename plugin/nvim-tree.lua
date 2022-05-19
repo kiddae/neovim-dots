@@ -29,7 +29,7 @@ require 'nvim-tree'.setup {
     ignore_ft_on_setup = { "dashboard" },
     view = {
         hide_root_folder = true,
-        width = 35
+        width = 25
     },
     actions = {
         open_file = {

@@ -12,7 +12,7 @@ Plug 'projekt0n/github-nvim-theme'
 Plug 'shaunsingh/nord.nvim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'ayu-theme/ayu-vim'
-    let g:ayucolor = "dark"
+    let g:ayucolor = "light"
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'mangeshrex/everblush.vim'
 Plug 'catppuccin/nvim', {'as': 'catppuccin', 'branch': 'main'}
@@ -27,10 +27,10 @@ Plug 'sainnhe/forest-night'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'kyazdani42/nvim-web-devicons' "dependency of barbar
-Plug 'kyazdani42/nvim-tree.lua'
 " Plug 'romgrk/barbar.nvim'
 
 "" IDE-LIKE FEATURES
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'hrsh7th/cmp-nvim-lsp'

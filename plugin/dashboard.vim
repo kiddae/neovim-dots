@@ -1,5 +1,4 @@
 let g:dashboard_default_executive='telescope'
-" let g:dashboard_default_header='pikachu'
 " let g:dashboard_preview_command = 'chafa -f symbols -c 256 --fg-only --symbols braille'
 " let g:dashboard_preview_file = '~/.config/nvim/LAINHADN3.gif'
 let g:dashboard_preview_file_height = 14

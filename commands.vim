@@ -4,8 +4,6 @@ set timeout timeoutlen=1000 ttimeoutlen=10
 " inoremap jk <Esc>
 
 "navigation
-nnoremap <leader>o :Files<CR>
-nnoremap <leader>O :Files $HOME<CR>
 nnoremap <leader>u :UndotreeToggle<CR>
 
 nnoremap <C-h> :wincmd h<CR>  "navigates
@@ -27,9 +25,7 @@ nnoremap <leader>vr :so $MYVIMRC<CR>
 
 nnoremap <S-tab> :bp<CR>
 nnoremap <tab> :bn<CR>
-nnoremap <silent> <C-s> :BufferPick<CR>
-nnoremap <C-q> :bdelete<CR>
-nnoremap <C-n> :enew<CR>
+nnoremap <C-q> :bp<bar>sp<bar>bn<bar>bd<CR>
 nnoremap <leader>r :RunSplit ranger<CR>
 nnoremap <leader>t :RunSplit $SHELL<CR>
 nnoremap <leader>T :ExtTerm <CR>
