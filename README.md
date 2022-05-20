@@ -1,5 +1,7 @@
 # A `neovim` configuration.
 
+![screenshot](screenshot.png)
+
 To be used with my [dotfiles](https://github.com/kiddae/dotfiles)
 
 Requires [`vim-plug`](https://github.com/junegunn/vim-plug) to manage plugins.
@@ -98,7 +100,7 @@ nnoremap <silent> <leader>dq :lua require'dap'.terminate()<CR>
 
 ### File explorer
 
-I use ['nvim-tree'](https://github.com/kyazdani42/nvim-tree.lua). Fire it up with `Ctrl+n`, and to quickly learn how to use it, `g?` will show its keybindings.
+I use [`nvim-tree`](https://github.com/kyazdani42/nvim-tree.lua). Fire it up with `Ctrl+n`, and to quickly learn how to use it, `g?` will show its keybindings.
 
 ### Telescope
 
