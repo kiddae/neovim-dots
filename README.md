@@ -79,7 +79,7 @@ Auto-completion and suggestions are provided by [`nvim-cmp`](https://github.com/
 ## Debug-Adapter Protocol
 
 I am using [`nvim-dap`](https://github.com/mfussenegger/nvim-dap) as a bridge to using debug adapters, as well as [`nvim-dap-ui`](https://github.com/gcarriga/nvim-dap-ui) as an intuitive user interface to debugging sessions.
-This requires the manual installation of the debug adapters, [`nvim-dap`'s wiki](https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation). I have configured `debugpy` and `vscode-cpptools`, with the virtualenv for `debugpy` in `~/.virtualenvs/debugpy/` and the binaries for `cpptools` in `~/Code/cpptools/`.
+This requires the manual installation of the debug adapters, [`nvim-dap`'s wiki](https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation) is probably the better option to understand how to do. I have configured `debugpy` and `vscode-cpptools`, with the virtualenv for `debugpy` in `~/.virtualenvs/debugpy/` and the binaries for `cpptools` in `~/Code/cpptools/`.
 
 Keybindings are the ones given as example by the plugin:
 
