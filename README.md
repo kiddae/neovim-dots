@@ -4,11 +4,9 @@
 
 To be used with my [dotfiles](https://github.com/kiddae/dotfiles)
 
-Requires [`vim-plug`](https://github.com/junegunn/vim-plug) to manage plugins.
-
 # Installation
 
-Clone the repository to `~/.config/nvim`. Install `vim-plug` using the command given in its repository. Run `nvim -c PlugInstall`. Voilà!
+Clone the repository to `~/.config/nvim`. Install [`vim-plug`](https://github.com/junegunn/vim-plug) using the command given in its repository. Run `nvim -c PlugInstall`. Voilà!
 
 # Usage
 
