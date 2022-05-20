@@ -13,6 +13,22 @@ nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
 nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
 " autocmd FileType dashboard set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2
 
+
+let g:dashboard_custom_section={
+\ 'find_history': {
+      \ 'description': ['ﭯ Recently opened files                 SPC f h'],
+      \ 'command':function('dashboard#handler#find_history')},
+\ 'find_file': {
+      \ 'description': [' Find file                             SPC f f'],
+      \ 'command':function('dashboard#handler#find_file')},
+\ 'new_file': {
+      \ 'description': [' New file                              SPC c n'],
+      \ 'command':function('dashboard#handler#new_file')},
+\ 'change_colorscheme': {
+      \ 'description': [' Change colorscheme                    SPC t c'],
+      \ 'command':function('dashboard#handler#change_colorscheme')},
+\ }
+
 "highlight dashboardHeader ctermfg=215
 
 
