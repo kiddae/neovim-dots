@@ -84,5 +84,11 @@ end
 require 'lspconfig'.pyright.setup {
     before_init = function(_, config)
         config.settings.python.pythonPath = get_python_path(config.root_dir)
-    end
+    end,
+    on_attach = on_attach,
+    flags = {
+        -- This will be the default in neovim 0.7+
+        debounce_text_changes = 150,
+    },
+    capabilities = capabilities
 }
