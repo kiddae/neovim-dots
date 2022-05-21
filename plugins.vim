@@ -55,7 +55,10 @@ Plug 'glepnir/dashboard-nvim'
 
 "" MISC TOOLS
 Plug 'folke/which-key.nvim'
-Plug 'tpope/vim-markdown'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+    let g:pandoc#syntax#conceal#urls = 1
+    let g:pandoc#syntax#conceal#use = 1
 Plug 'lervag/vimtex'
     let g:tex_flavor = 'latex'
     let g:vimtex_syntax_conceal_disable = 0

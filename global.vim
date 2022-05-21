@@ -57,15 +57,15 @@ autocmd TermOpen * startinsert
 autocmd VimLeave * set guicursor=a:ver100
 
 "spell
-autocmd FileType gitcommit,tex,rmd,markdown,pandoc setlocal spell spelllang=fr,en_us
+" autocmd FileType gitcommit,tex,rmd,markdown,pandoc setlocal spell spelllang=fr,en_us
 set complete+=kspell
 
 "remove tilde in empty lines
 let &fcs='eob: '
 
-set conceallevel=1
-set concealcursor=c
+" to avoid conflicts with virtualenvs
+let g:python3_host_prog='/usr/bin/python'
 
-hi! markdownItalic cterm=italic
-hi! Comment cterm=italic
+" hi! markdownItalic cterm=italic
+" hi! Comment cterm=italic
 
