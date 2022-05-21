@@ -12,7 +12,7 @@ Plug 'projekt0n/github-nvim-theme'
 Plug 'shaunsingh/nord.nvim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'ayu-theme/ayu-vim'
-    let g:ayucolor = "light"
+    let g:ayucolor = "mirage"
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'mangeshrex/everblush.vim'
 Plug 'catppuccin/nvim', {'as': 'catppuccin', 'branch': 'main'}
@@ -45,6 +45,7 @@ Plug 'SirVer/ultisnips'
     let g:UltiSnipsJumpForwardTrigger="<tab>"
     let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 Plug 'mfussenegger/nvim-dap'
+Plug 'mfussenegger/nvim-dap-python'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-dap.nvim'
