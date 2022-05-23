@@ -50,6 +50,11 @@ set foldlevel=99
 set background=dark
 colorscheme ayu
 
+"kitty padding
+autocmd VimEnter * silent !kitty @ --to=$KITTY_LISTEN_ON set-spacing padding=0 &
+autocmd VimLeave * silent !kitty @ --to=$KITTY_LISTEN_ON set-spacing padding=default &
+
+
 "set terminal automatically in insert mode
 autocmd TermOpen * startinsert
 

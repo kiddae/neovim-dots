@@ -12,7 +12,7 @@ Plug 'projekt0n/github-nvim-theme'
 Plug 'shaunsingh/nord.nvim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'ayu-theme/ayu-vim'
-    let g:ayucolor = "mirage"
+    let g:ayucolor = "light"
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'mangeshrex/everblush.vim'
 Plug 'catppuccin/nvim', {'as': 'catppuccin', 'branch': 'main'}

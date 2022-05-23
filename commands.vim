@@ -5,13 +5,14 @@ set timeout timeoutlen=1000 ttimeoutlen=10
 
 "navigation
 nnoremap <leader>u :UndotreeToggle<CR>
-
-nnoremap <C-h> :wincmd h<CR>  "navigates
+"navigates
+nnoremap <C-h> :wincmd h<CR>
 nnoremap <C-j> :wincmd j<CR>
 nnoremap <C-k> :wincmd k<CR>
 nnoremap <C-l> :wincmd l<CR>
 nnoremap <C-w> :wincmd w<CR>
-nnoremap <leader>h :wincmd H<CR> "moves
+"moves
+nnoremap <leader>h :wincmd H<CR>
 nnoremap <leader>j :wincmd J<CR>
 nnoremap <leader>k :wincmd K<CR>
 nnoremap <leader>l :wincmd L<CR>
@@ -43,7 +44,6 @@ nmap <C-n> :NvimTreeToggle<CR>
 " Custom commands
 command -nargs=1 RunSplit :vsp | :wincmd l | :vertical resize 80% | :terminal <args> 
 command ExtTerm :silent !$TERMINAL &
-nnoremap <F10> :call asyncrun#quickfix_toggle(6)<CR>
 
 " Compile and run
 " Rules for each filetype: Rules.filetype = {'compile': "<cmd>", 'run': "<cmd>", 'silent': v:true|v:false}
