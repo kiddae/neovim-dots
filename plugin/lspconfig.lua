@@ -78,7 +78,7 @@ local function get_python_path(workspace)
         end
     end
     -- Fallback to system Python.
-    return exepath('python3') or exepath('python') or 'python'
+    return '/usr/bin/python'
 end
 
 require 'lspconfig'.pyright.setup {

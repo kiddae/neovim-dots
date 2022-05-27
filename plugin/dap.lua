@@ -10,6 +10,7 @@ nnoremap <silent> <leader>lp :lua require'dap'.set_breakpoint(nil, nil, vim.fn.i
 nnoremap <silent> <leader>dr :lua require'dap'.repl.toggle()<CR>
 nnoremap <silent> <leader>dl :lua require'dap'.run_last()<CR>
 nnoremap <silent> <leader>dq :lua require'dap'.terminate()<CR>
+vnoremap <C-k> :lua require'dapui'.eval()<CR>
 ]]);
 
 --- CONFIGURATIONS/ADAPTERS
@@ -34,7 +35,15 @@ dap.configurations.cpp = {
         end,
         cwd = '${workspaceFolder}',
         stopOnEntry = true,
+        setupCommands = {
+            {
+                text = '-enable-pretty-printing',
+                description = 'enable pretty printing',
+                ignoreFailures = false
+            },
+        },
     },
+
 }
 dap.configurations.c = dap.configurations.cpp
 
