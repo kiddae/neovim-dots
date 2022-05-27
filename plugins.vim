@@ -45,11 +45,17 @@ Plug 'SirVer/ultisnips'
     let g:UltiSnipsJumpForwardTrigger="<tab>"
     let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 Plug 'mfussenegger/nvim-dap'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects' 
 Plug 'mfussenegger/nvim-dap-python'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'glepnir/dashboard-nvim'
+Plug 'Yggdroot/indentLine'
+    let g:indentLine_bufTypeExclude = ['help', 'terminal']
+    let g:indentLine_fileTypeExclude = ['dashboard', 'man']
+    autocmd TermOpen * IndentLinesDisable
 " Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "     let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-vimlsp', 'coc-pyright', 'coc-discord-rpc', 'coc-clangd', 'coc-vimtex', 'coc-markdownlint', 'coc-snippets', 'coc-html', 'coc-css', 'coc-tsserver']
@@ -71,10 +77,9 @@ Plug 'KeitaNakamura/tex-conceal.vim'
     hi Conceal ctermbg = none
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ryanoasis/vim-devicons'
-Plug 'thaerkh/vim-indentguides'
-    let g:indentguides_ignorelist = ['help', 'dashboard']
+" Plug 'thaerkh/vim-indentguides'
+"     let g:indentguides_ignorelist = ['help', 'dashboard']
 Plug 'jiangmiao/auto-pairs'
 Plug 'karb94/neoscroll.nvim'
 Plug 'tpope/vim-fugitive'

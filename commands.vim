@@ -48,22 +48,23 @@ command ExtTerm :silent !$TERMINAL &
 " Compile and run
 " Rules for each filetype: Rules.filetype = {'compile': "<cmd>", 'run': "<cmd>", 'silent': v:true|v:false}
 " If adding/updating interactively, 
-let g:Rules = {}
-let g:Rules.python = {"compile": "", "run": "python %", "silent": v:false}
-let g:Rules.cpp = {"compile": "make", "run": "./%<", "silent": v:false}
-let g:Rules.c = g:Rules.cpp
+let b:Rules = {}
+let b:Rules.python = {"compile": "", "run": "python ".fnameescape(expand('%')), "silent": v:false}
+let b:Rules.cpp = {"compile": "make", "run": "time ./%<", "silent": v:false}
+let b:Rules.c = b:Rules.cpp
 
 function! UpdateCommands()
-    if !has_key(g:Rules, &ft)
+    if !has_key(b:Rules, &ft)
         return
     endif
-    if get(g:Rules, &ft).silent
-        command! -buffer Compile :execute "AsyncRun -post=copen " .. get(g:Rules, &ft).compile
+    if get(b:Rules, &ft).silent
+        command! -buffer Compile :execute "AsyncRun -post=copen " .. get(b:Rules, &ft).compile
     else
-        command! -buffer Compile :execute "RunSplit " .. get(g:Rules, &ft).compile
+        command! -buffer Compile :execute "RunSplit " .. get(b:Rules, &ft).compile
     endif
-    command! -buffer RunProgram :execute "RunSplit " .. get(g:Rules, &ft).run
+    command! -buffer RunProgram :execute "RunSplit " .. get(b:Rules, &ft).run
     nnoremap <buffer> <leader><F4> :w<CR>:Compile<CR>
     nnoremap <buffer> <leader><F5> :w<CR>:RunProgram<CR>
+    execute 'autocmd FileType ' . &ft . ' autocmd BufEnter <buffer> if filereadable(".vimrc") | source .vimrc | call UpdateCommands() | endif'
+    execute 'autocmd FileType ' . &ft . ' autocmd BufEnter <buffer> call UpdateCommands()'
 endfunction
-call UpdateCommands()

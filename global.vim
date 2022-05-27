@@ -38,9 +38,7 @@ set termguicolors
 set cursorline
 set showtabline=2
 autocmd BufEnter * silent! lcd %:p:h
-autocmd BufEnter * call UpdateCommands()
 "source local configurations
-autocmd BufEnter * if filereadable(".vimrc") | source .vimrc | call UpdateCommands() | endif
 
 set foldmethod=indent
 set foldlevel=99
@@ -59,6 +57,7 @@ endif
 
 "set terminal automatically in insert mode
 autocmd TermOpen * startinsert
+autocmd TermOpen * set nonu nornu
 
 "reset the terminal cursor when leaving
 autocmd VimLeave * set guicursor=a:ver100
@@ -76,3 +75,4 @@ let g:python3_host_prog='/usr/bin/python'
 " hi! markdownItalic cterm=italic
 " hi! Comment cterm=italic
 
+autocmd VimEnter * call UpdateCommands()
