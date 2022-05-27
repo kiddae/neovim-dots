@@ -2,11 +2,8 @@ OBJS =  .cpp
 OBJ_NAME = 
 
 CC = g++
-COMPILER_FLAGS = -w
+COMPILER_FLAGS = -std=c++17 -w
 LINKER_FLAGS = 
 
 $(OBJ_NAME): $(OBJS)
 	$(CC) $(OBJS) $(COMPILER_FLAGS) $(LINKER_FLAGS) -o $(OBJ_NAME)
-
-run: $(OBJ_NAME)
-	./$(OBJ_NAME)

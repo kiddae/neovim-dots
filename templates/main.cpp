@@ -1,9 +1,8 @@
 #include <iostream>
+#define test(a, b)                                                             \
+  { std::cout << a << " " << b << ": " << (a == b) << std::endl; }
 
-using namespace std;
-
-int main()
-{
-
-    return 0;
+int main() {
+  ;
+  return 0;
 }
