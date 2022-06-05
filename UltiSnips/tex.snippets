@@ -4,7 +4,7 @@ def isMath():
 endglobal
 
 
-snippet "beg" "begin{} / end{}" bA
+snippet beg "begin{} / end{}" bA
 \begin{$1}
 	${0:${VISUAL}}
 \end{$1}
@@ -53,13 +53,13 @@ snippet ttab "tkz-tab" i
 \end{figure}
 endsnippet
 
-snippet "enum" "Enumerate" bA
+snippet enum "Enumerate" bA
 \begin{enumerate}
 	\item $0
 \end{enumerate}
 endsnippet
 
-snippet "item" "Itemize" bA
+snippet item "Itemize" bA
 \begin{itemize}
 	\item $0
 \end{itemize}
@@ -96,20 +96,20 @@ snippet fig "Figure environment" b
 endsnippet
 
 
-snippet "tikz" "Tikz block" bA
+snippet tikz "Tikz block" bA
 \begin{tikzpicture}
 	${1:${VISUAL}}
 \end{tikzpicture}
 endsnippet
 
 
-snippet "%%" "comment" bA
+snippet %% "comment" bA
 \begin{comment}
 	$0
 \end{comment}
 endsnippet
 
-snippet "mk" "Math" wA
+snippet mk "Math" wA
 $${1:${VISUAL}}$`!p
 if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
     snip.rv = ' '
@@ -118,7 +118,7 @@ else:
 `$2
 endsnippet
 
-snippet "dm" "Math" wA
+snippet dm "Math" wA
 \[
 ${1:${VISUAL}}
 .\] $0
@@ -134,22 +134,22 @@ snippet '([A-Za-z])_(\d\d)' "auto subscript2" wrA
 endsnippet
 
 context "isMath()"
-snippet "sr" "^2" iA
+snippet sr "^2" iA
 ^2
 endsnippet
 
 context "isMath()"
-snippet "cb" "^3" iA
+snippet cb "^3" iA
 ^3
 endsnippet
 
 context "isMath()"
-snippet "pw" "superscript" iA
+snippet pw "superscript" iA
 ^{${1:${VISUAL}}}$0
 endsnippet
 
 context "isMath()"
-snippet "//" "Fraction" iA
+snippet // "Fraction" iA
 \\frac{$1}{$2}$0
 endsnippet
 
@@ -180,98 +180,98 @@ snippet / "Fraction" i
 endsnippet
 
 context "isMath()"
-snippet "=>" "Implies" Ai
+snippet => "Implies" Ai
 \implies 
 endsnippet
 
 context "isMath()"
-snippet "=<" "Implied by" Ai
+snippet =< "Implied by" Ai
 \impliedby 
 endsnippet
 
 context "isMath()"
-snippet "iff" "if and only if" i
+snippet iff "if and only if" i
 \iff
 endsnippet
 
 context "isMath()"
-snippet "!=" "Equals" iA
+snippet != "Equals" iA
 \ne 
 endsnippet
 
 context "isMath()"
-snippet "<=" "Less than or equal" iA
+snippet <= "Less than or equal" iA
 \le 
 endsnippet
 
 context "isMath()"
-snippet ">=" "Greater than or equal" iA
+snippet >= "Greater than or equal" iA
 \ge 
 endsnippet
 
 context "isMath()"
-snippet "sq" "\sqrt{}" i
+snippet sq "\sqrt{}" i
 \sqrt{${1:${VISUAL}}} $0
 endsnippet
 
 context "isMath()"
-snippet "EE" "exists" iA
+snippet EE "exists" iA
 \exists 
 endsnippet
 
 context "isMath()"
-snippet "AA" "forall" iA
+snippet AA "forall" iA
 \forall  
 endsnippet
 
 context "isMath()"
-snippet "xx" "cross" iA
+snippet xx "cross" iA
 \times
 endsnippet
 
 context "isMath()"
-snippet "**" "cdot" iA
+snippet ** "cdot" iA
 \cdot $1
 endsnippet
 
 context "isMath()"
-snippet "..." "cdots" iA
+snippet ... "cdots" iA
 \cdots 
 endsnippet
 
-snippet "ali" "Align" bA
+snippet ali "Align" bA
 \begin{align*}
 	${1:${VISUAL}}
 .\end{align*}
 endsnippet
 
 context "isMath()"
-snippet "==" "Aligned equal" iA
+snippet == "Aligned equal" iA
 &= $1
 endsnippet
 
 context "isMath()"
-snippet "RR" "real" iA
+snippet RR "real" iA
 \mathbb{R}
 endsnippet
 
 context "isMath()"
-snippet "NN" "natural" iA
+snippet NN "natural" iA
 \mathbb{N}
 endsnippet
 
 context "isMath()"
-snippet "ZZ" "integer" iA
+snippet ZZ "integer" iA
 \mathbb{R}
 endsnippet
 
 context "isMath()"
-snippet "DD" "decimal" iA
+snippet DD "decimal" iA
 \mathbb{D}
 endsnippet
 
 context "isMath()"
-snippet "QQ" "rational" iA
+snippet QQ "rational" iA
 \mathbb{Q}
 endsnippet
 
@@ -286,11 +286,11 @@ snippet lim "limit" w
 endsnippet
 
 context "isMath()"
-snippet "ooo" "infinity" iA
+snippet ooo "infinity" iA
 \infty
 endsnippet
 
-snippet "alg" "algorithmic" bA
+snippet alg "algorithmic" bA
 \begin{algorithm}
 	\caption{${1:caption}}\label{alg:${2:caption}}
 	\begin{algorithmic}
@@ -308,21 +308,21 @@ snippet box "boxed" i
 endsnippet
 
 context "isMath()"
-snippet "SI" "SI unit" iA
+snippet SI "SI unit" iA
 \SI{${1:${VISUAL}}}$0
 endsnippet
 
 context "isMath()"
-snippet "mbb" "\mathbb{}" iA
+snippet mbb "\mathbb{}" iA
 \mathbb{${1:${VISUAL}}}$0
 endsnippet
 
 context "isMath()"
-snippet "mcal" "\mathcal{}" iA
+snippet mcal "\mathcal{}" iA
 \mathcal{${1:${VISUAL}}} $0
 endsnippet
 
-snippet "thm" "Theorem" bA
+snippet thm "Theorem" bA
 \begin{theorem}[$1]\label{thm:${2:label}}
 	$0
 \end{theorem}
