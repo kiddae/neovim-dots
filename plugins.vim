@@ -12,9 +12,9 @@ Plug 'projekt0n/github-nvim-theme'
 Plug 'shaunsingh/nord.nvim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'ayu-theme/ayu-vim'
-    let g:ayucolor = "light"
+    let g:ayucolor = "dark"
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-Plug 'mangeshrex/everblush.vim'
+Plug 'Everblush/everblush.nvim'
 Plug 'catppuccin/nvim', {'as': 'catppuccin', 'branch': 'main'}
 Plug 'AlessandroYorba/Alduin'
 Plug 'TheNiteCoder/mountaineer.vim'

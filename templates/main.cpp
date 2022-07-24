@@ -1,6 +1,15 @@
 #include <iostream>
-#define test(a, b)                                                             \
-  { std::cout << a << " " << b << ": " << (a == b) << std::endl; }
+
+template <typename T> void test(T output, T expect) {
+  std::cout << "Test " << output << " == " << expect;
+  if (output == expect) {
+    std::cout << " OK" << std::endl;
+  } else {
+    std::cout << " ERR: " << std::endl;
+    std::cout << "\tgot " << output << ", expected " << expect << std::endl;
+  }
+  std::cout << "---" << std::endl;
+}
 
 int main() {
   ;
