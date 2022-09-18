@@ -92,3 +92,17 @@ require 'lspconfig'.pyright.setup {
     },
     capabilities = capabilities
 }
+
+require 'lspconfig'.ltex.setup {
+    settings = {
+        ltex = {
+            language = "fr"
+        }
+    },
+    on_attach = on_attach,
+    flags = {
+        -- This will be the default in neovim 0.7+
+        debounce_text_changes = 150,
+    },
+    capabilities = capabilities
+}
