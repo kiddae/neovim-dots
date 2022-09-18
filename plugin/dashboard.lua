@@ -2,12 +2,13 @@ local db = require('dashboard')
 vim.api.nvim_set_keymap('n', '<leader>cn', ':DashboardNewFile<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>ff', ':Telescope find_files<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>fh', ':Telescope oldfiles<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>vd', ':Telescope find_files cwd=~/.config/nvim/ search_dirs=Ultisnips,plugin,ftplugin,templates,init.vim<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>vd', ':Telescope find_files cwd=~/.config/nvim <CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>tc', ':Telescope colorscheme<CR>', { noremap = true, silent = true })
 
 db.hide_tabline = false
 db.hide_statusline = false
 
+db.custom_footer = { 'Have a great coding session~ <3' }
 db.custom_center = {
     {
         icon = '  ',
@@ -27,17 +28,17 @@ db.custom_center = {
         shortcut = 'SPC f h',
         action = 'Telescope oldfiles'
     },
-    {
-        icon = 'ﰩ  ',
-        desc = 'Update plugins                    ',
-        shortcut = ':PlugUpdate',
-        action = 'PlugUpdate'
-    },
+    -- {
+    --     icon = 'ﰩ  ',
+    --     desc = 'Update plugins                    ',
+    --     shortcut = ':PlugUpdate',
+    --     action = 'PlugUpdate'
+    -- },
     {
         icon = '漣 ',
         desc = 'Browse configuration                  ',
         shortcut = 'SPC v d',
-        action = 'Telescope find_files cwd=~/.config/nvim/ search_dirs=Ultisnips,plugin,ftplugin,templates,init.vim<CR>'
+        action = 'Telescope find_files cwd=~/.config/nvim'
     },
     {
         icon = '  ',
@@ -47,7 +48,7 @@ db.custom_center = {
     },
     {
         icon = '  ',
-        desc = 'Quit                                     ',
+        desc = 'Quit                                      ',
         shortcut = ':q!',
         action = 'q!'
     }
@@ -102,8 +103,6 @@ db.custom_header = {
     "    /  .-' )\\       ",
     "    \\,---'` \\       ",
     "             \\|     ",
-    "                    ",
-    "                    ",
 }
 
 -- " let g:dashboard_custom_header = [
@@ -122,3 +121,14 @@ db.custom_header = {
 -- "             \'⠀⠀⠀⠀⠛⢿⣿⣿⣿⣷⢦⣄⣀⡀⠤⣤⣤⣀⣀⣬⣿⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀',
 -- "             \'⠀⠀⠀⢠⣴⣿⣿⣿⣿⣿⣦⣭⣷⣶⣿⣿⡿⠿⠟⠋⠁⠉⠛⠛⠿⠋⠁',
 -- "             \]
+--
+vim.cmd('hi! DashboardHeader guifg=#67b0e8')
+vim.cmd('hi! DashboardFooter guifg=#8ccf7e')
+vim.cmd('hi! DashboardShortCut guifg=#2d3437')
+vim.cmd('hi! DashboardCenter1Icon guifg=#e57474')
+vim.cmd('hi! DashboardCenter3Icon guifg=#e57474')
+vim.cmd('hi! DashboardCenter5Icon guifg=#e57474')
+vim.cmd('hi! DashboardCenter7Icon guifg=#e57474')
+vim.cmd('hi! DashboardCenter9Icon guifg=#e57474')
+vim.cmd('hi! DashboardCenter11Icon guifg=#e57474')
+vim.cmd('hi! DashboardCenter13Icon guifg=#e57474')
