@@ -14,7 +14,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'ayu-theme/ayu-vim'
     let g:ayucolor = "dark"
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-Plug 'Everblush/everblush.nvim'
+Plug 'Everblush/everblush.vim'
 Plug 'catppuccin/nvim', {'as': 'catppuccin', 'branch': 'main'}
 Plug 'AlessandroYorba/Alduin'
 Plug 'TheNiteCoder/mountaineer.vim'
@@ -55,6 +55,8 @@ Plug 'glepnir/dashboard-nvim'
 Plug 'Yggdroot/indentLine'
     let g:indentLine_bufTypeExclude = ['help', 'terminal']
     let g:indentLine_fileTypeExclude = ['dashboard', 'man']
+    let g:indentLine_concealcursor=""
+    let g:indentLine_conceallevel=2
     autocmd TermOpen * IndentLinesDisable
 " Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -68,13 +70,12 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
     let g:pandoc#syntax#conceal#use = 1
 Plug 'lervag/vimtex'
     let g:tex_flavor = 'latex'
-    let g:vimtex_syntax_conceal_disable = 0
     let g:vimtex_view_method = 'zathura'
     let g:vimtex_quickfix_mode = 0
-Plug 'KeitaNakamura/tex-conceal.vim'
-    set conceallevel=1
-    let g:tex_conceal = 'abdmg'
-    hi Conceal ctermbg = none
+" Plug 'KeitaNakamura/tex-conceal.vim'
+    " set conceallevel=1
+    " let g:tex_conceal = 'abdmg'
+    " hi Conceal ctermbg = none
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'ryanoasis/vim-devicons'

@@ -50,7 +50,7 @@ colorscheme everblush
 
 "kitty padding
 if $TERM == "xterm-kitty"
-" autocmd VimEnter * silent !kitty @ --to=$KITTY_LISTEN_ON set-spacing padding=10 &
+" autocmd VimEnter * silent !kitty @ --to=$KITTY_LISTEN_ON set-spacing padding=0 &
 autocmd VimLeave * silent !kitty @ --to=$KITTY_LISTEN_ON set-spacing padding=default &
 endif
 
@@ -76,3 +76,5 @@ let g:python3_host_prog='/usr/bin/python'
 " hi! Comment cterm=italic
 
 autocmd VimEnter * call UpdateCommands()
+set rtp^="/home/louise/.opam/cs3110-2022fa/share/ocp-indent/vim"
+
