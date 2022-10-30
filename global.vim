@@ -46,11 +46,11 @@ set foldlevel=99
 
 ""colorscheme
 set background=dark
-colorscheme everblush
+colorscheme ayu
 
 "kitty padding
 if $TERM == "xterm-kitty"
-" autocmd VimEnter * silent !kitty @ --to=$KITTY_LISTEN_ON set-spacing padding=0 &
+autocmd VimEnter * silent !kitty @ --to=$KITTY_LISTEN_ON set-spacing padding=0 &
 autocmd VimLeave * silent !kitty @ --to=$KITTY_LISTEN_ON set-spacing padding=default &
 endif
 

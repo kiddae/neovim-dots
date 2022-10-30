@@ -1,36 +1,104 @@
-\documentclass{article}
+\documentclass[a4paper, french]{paper}
 
-\usepackage[utf8] {inputenc}
-\usepackage[T1] {fontenc}
-\usepackage{lmodern}
-\usepackage[cm]{fullpage}
-\usepackage[french] {babel}
-\usepackage{amsmath, amssymb, amsfonts, mathtools, esvect, amsthm}
-\usepackage{tikz}
-\usepackage{algorithm, algpseudocode}
-\usepackage{comment}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{amsmath, amssymb, amsfonts, mathtools, esvect}
+\usepackage[thref,hyperref,thmmarks,amsmath]{ntheorem}
+\usepackage[toc, header]{appendix}
+\renewcommand{\appendixtocname}{Annexe}
+\usepackage{helvet}
+\usepackage{bold-extra}
+\usepackage[margin=2cm]{geometry}
+\usepackage[french]{babel}
+\usepackage{titlesec}
+% \usepackage[marginpar]{todo}
+% \usepackage{algorithm, algpseudocode}
+% \usepackage{tikz}
 
-\newtheorem{theorem}{Theorem} [section]
-\newtheorem{corollary}{Corollary} [theorem]
-\newtheorem{lemma}[theorem]{Lemma}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=false,
+    linkbordercolor=green,
+    pdfborderstyle={/S/U/W 2}
+}
 
-\theoremstyle{remark}
-\newtheorem*{remark}{Remark}
+\titleformat{\section}
+{\Large\sffamily\bfseries\scshape}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\large\sffamily\bfseries\scshape}{\thesubsection}{1em}{}
 
-\theoremstyle{definition}
-\newtheorem{exmp}{Example}[section]
+\theoremindent=0.5cm
+\theoremheaderfont{\kern-0.5cm\normalfont\bfseries\scshape}
+\theoremseparator{.}
+\theorempreskip{2em}
+\theorempostskip{2em}
 
-\theoremstyle{definition}
-\newtheorem{definition}{Definition} [section]
+\theoremsymbol{\ensuremath\heartsuit}
+\newtheorem{theorem}{Théorème}
+\theoremsymbol{}
+\newtheorem*{corollary}{Corollaire}
+\newtheorem{lemma}[theorem]{Lemme}
 
-% The 'proof' environment is defined in asmthm.
+\theoremsymbol{{\rm Q.E.D}}
+\theorembodyfont{\normalfont}
+\newtheorem*{proof}{Démonstration}
 
-\title{Title}
-\author{Louise NGUYEN}
+\theoremsymbol{\ensuremath\diamondsuit}
+\newtheorem{definition}{Définition}
+
+\theoremheaderfont{\kern-0.5cm\normalfont\scshape}
+\theoremsymbol{\ensuremath\ast}
+\theorembodyfont{\normalfont}
+\newtheorem{exmp}{Exemple}
+\newtheorem*{remark}{Remarque}
+
+\theoremheaderfont{\normalfont\scshape}
+\theoremstyle{nonumberplain}
+\theorembodyfont{\normalfont}
+\theoremsymbol{\ensuremath\ast}
+\theorempreskip{0em}
+\newtheorem{elmproof}{Éléments de démonstration}
+
+\title{Titre}
+% \subtitle{}
+\author{Louise Nguyen} % \and...
+% \institution{Lycée Pierre de Fermat}
+% \thanks{}
+
+\date{}
+
+%% FIN DU PRÉAMBULE %%
 
 \begin{document}
 
 \maketitle
+\hrule
+\smalltableofcontents
+
+% \subsubsection*{Liste des théorèmes}
+% \theoremlisttype{optname}
+% \begin{small}
+% \listtheorems{theorem,lemma,corollary}
+% \end{small}
+% \subsubsection*{Liste des définitions}
+% \theoremlisttype{allname}
+% \begin{small}
+% \listtheorems{definition}
+% \end{small}
+
+\begin{abstract}
+    Résumé
+\end{abstract}
+\hrule\bigskip
+
+%% Vrai début du document %%
+
+\section{Première partie}
+
+% Si besoin d'annexes...
+% \begin{appendices}
+% \end{appendices}
 
 \end{document}
-=======
+
