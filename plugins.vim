@@ -2,25 +2,25 @@
 
 call plug#begin(stdpath('data') . '/plugged')
 "" COLORSCHEMES
-Plug 'rose-pine/neovim'
-    let g:rose_pine_disable_background = v:false
-    let g:rose_pine_variant = 'dawn'
-Plug 'morhetz/gruvbox'
-Plug 'rakr/vim-one'
-    let g:one_allow_italics = 1
-Plug 'projekt0n/github-nvim-theme'
-Plug 'shaunsingh/nord.nvim'
-Plug 'NLKNguyen/papercolor-theme'
+" Plug 'rose-pine/neovim'
+"     let g:rose_pine_disable_background = v:false
+"     let g:rose_pine_variant = 'dawn'
+" Plug 'morhetz/gruvbox'
+" Plug 'rakr/vim-one'
+"     let g:one_allow_italics = 1
+" Plug 'projekt0n/github-nvim-theme'
+" Plug 'shaunsingh/nord.nvim'
+" Plug 'NLKNguyen/papercolor-theme'
 Plug 'ayu-theme/ayu-vim'
     let g:ayucolor = "dark"
-Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-Plug 'Everblush/everblush.vim'
-Plug 'catppuccin/nvim', {'as': 'catppuccin', 'branch': 'main'}
-Plug 'AlessandroYorba/Alduin'
-Plug 'TheNiteCoder/mountaineer.vim'
-Plug 'ulwlu/elly.vim'
-Plug 'dracula/vim', { 'as': 'dracula'}
-Plug 'sainnhe/forest-night'
+" Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+" Plug 'Everblush/everblush.vim'
+" Plug 'catppuccin/nvim', {'as': 'catppuccin', 'branch': 'main'}
+" Plug 'AlessandroYorba/Alduin'
+" Plug 'TheNiteCoder/mountaineer.vim'
+" Plug 'ulwlu/elly.vim'
+" Plug 'dracula/vim', { 'as': 'dracula'}
+" Plug 'sainnhe/forest-night'
 " Plug 'chriskempson/base16-vim'
 
 "" STATUS LINES
@@ -63,11 +63,12 @@ Plug 'Yggdroot/indentLine'
 "     let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-vimlsp', 'coc-pyright', 'coc-discord-rpc', 'coc-clangd', 'coc-vimtex', 'coc-markdownlint', 'coc-snippets', 'coc-html', 'coc-css', 'coc-tsserver']
 
 "" MISC TOOLS
+Plug 'lewis6991/impatient.nvim'
 Plug 'folke/which-key.nvim'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-    let g:pandoc#syntax#conceal#urls = 1
-    let g:pandoc#syntax#conceal#use = 1
+" Plug 'vim-pandoc/vim-pandoc'
+" Plug 'vim-pandoc/vim-pandoc-syntax'
+"     let g:pandoc#syntax#conceal#urls = 1
+"     let g:pandoc#syntax#conceal#use = 1
 Plug 'lervag/vimtex'
     let g:tex_flavor = 'latex'
     let g:vimtex_view_method = 'zathura'
@@ -82,7 +83,7 @@ Plug 'ryanoasis/vim-devicons'
 " Plug 'thaerkh/vim-indentguides'
 "     let g:indentguides_ignorelist = ['help', 'dashboard']
 Plug 'jiangmiao/auto-pairs'
-Plug 'karb94/neoscroll.nvim'
+" Plug 'karb94/neoscroll.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'lilydjwg/colorizer'
     let g:colorizer_nomap = 1
@@ -95,7 +96,7 @@ Plug 'fladson/vim-kitty'
 call plug#end()
 
 lua require('lualine').setup({options = {theme = 'auto', section_separators = { left = '', right = '' }, component_separators = { left = '', right = '' }, globalstatus = true}})
-lua require('neoscroll').setup()
+" lua require('neoscroll').setup()
 lua require('which-key').setup()
 lua require('telescope').setup()
 lua require('nvim-lsp-installer').setup({ automatic_installation = true })

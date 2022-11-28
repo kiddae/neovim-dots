@@ -82,6 +82,13 @@ local function get_python_path(workspace)
 end
 
 require 'lspconfig'.pyright.setup {
+    settings = {
+        python = {
+            analysis = {
+                typeCheckingMode = "off"
+            }
+        }
+    },
     before_init = function(_, config)
         config.settings.python.pythonPath = get_python_path(config.root_dir)
     end,

@@ -1,4 +1,8 @@
-source ~/.config/nvim/plugins.vim "uses plug.vim
+" to speed up things...
+lua require('impatient')
+
+lua require('plugins')
+" source ~/.config/nvim/plugins.vim "uses plug.vim
 source ~/.config/nvim/templates.vim "templates
 source ~/.config/nvim/commands.vim "custom commands and keybindings
 source ~/.config/nvim/global.vim "global options
