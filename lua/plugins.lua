@@ -6,7 +6,7 @@ return require('packer').startup(function(use)
     use { 'rakr/vim-one', event = 'ColorSchemePre' }
     use { 'projekt0n/github-nvim-theme', event = 'ColorSchemePre' }
     use { 'shaunsingh/nord.nvim', event = 'ColorSchemePre' }
-    use { 'ayu-theme/ayu-vim', event = 'ColorSchemePre'}
+    use { 'ayu-theme/ayu-vim', event = 'ColorSchemePre' }
     vim.cmd [[let g:ayucolor = "light"]]
     use { 'kaicataldo/material.vim', branch = 'main', event = 'ColorSchemePre' }
     use { 'Everblush/everblush.vim', event = 'ColorSchemePre' }
@@ -26,13 +26,13 @@ return require('packer').startup(function(use)
     use { 'kyazdani42/nvim-tree.lua', config = "require('config.tree')", cmd = { 'NvimTreeToggle', 'NvimTreeOpen' } }
     use { 'williamboman/nvim-lsp-installer',
         config = "require('nvim-lsp-installer').setup({ automatic_installation = true })" }
-    use { 'neovim/nvim-lspconfig', config = "require('config.lspconfig')", requires = "cmp-nvim-lsp" }
+    use { 'neovim/nvim-lspconfig', config = "require('config.lspconfig')", requires = "hrsh7th/cmp-nvim-lsp" }
     use { 'hrsh7th/nvim-cmp', config = "require('config.cmp')", event = "InsertEnter" }
     use { 'hrsh7th/cmp-buffer', after = "nvim-cmp" }
     use { 'hrsh7th/cmp-path', after = "nvim-cmp" }
     use { 'hrsh7th/cmp-cmdline', after = "nvim-cmp" }
     use { 'quangnguyen30192/cmp-nvim-ultisnips', after = "nvim-cmp" }
-    use { 'SirVer/ultisnips', config = function()
+    use { 'SirVer/ultisnips', ft = 'latex', config = function()
         vim.cmd [[
             let g:UltiSnipsExpandTrigger="<tab>"
             let g:UltiSnipsJumpForwardTrigger="<tab>"
