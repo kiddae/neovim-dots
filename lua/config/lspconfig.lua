@@ -1,5 +1,9 @@
 -- List of servers
-local servers = { 'pyright', 'clangd', 'tsserver', 'bashls', 'ltex', 'ocamllsp', 'html', 'cssls', 'vimls', 'sumneko_lua', 'texlab' }
+local servers = { 'pylsp', 'clangd', 'bashls', 'ltex', 'ocamllsp', 'vimls', 'sumneko_lua', 'texlab',
+    'rust_analyzer' }
+
+require("mason").setup()
+require("mason-lspconfig").setup({ ensure_installed = servers })
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -27,7 +31,8 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>k', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wl',
+        '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
@@ -92,6 +97,26 @@ require 'lspconfig'.pyright.setup {
     before_init = function(_, config)
         config.settings.python.pythonPath = get_python_path(config.root_dir)
     end,
+    on_attach = on_attach,
+    flags = {
+        -- This will be the default in neovim 0.7+
+        debounce_text_changes = 150,
+    },
+    capabilities = capabilities
+}
+require 'lspconfig'.pylsp.setup {
+    settings = {
+        pylsp = {
+            plugins = {
+                flake8 = {
+                    enabled = true
+                },
+                pylint = {
+                    enabled = true
+                }
+            }
+        }
+    },
     on_attach = on_attach,
     flags = {
         -- This will be the default in neovim 0.7+

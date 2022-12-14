@@ -16,40 +16,47 @@ vnoremap <C-k> :lua require'dapui'.eval()<CR>
 --- CONFIGURATIONS/ADAPTERS
 local dap = require('dap')
 
--- python
-require 'dap-python'.setup('~/.virtualenvs/debugpy/bin/python')
+require("mason-nvim-dap").setup({
+    ensure_installed = { "python", "cppdbg" },
+    automatic_setup = true,
+})
+require("mason-nvim-dap").setup_handlers()
 
--- c/c++
-dap.adapters.cppdbg = {
-    type = 'executable';
-    id = 'cppdbg';
-    command = os.getenv('HOME') .. '/Code/cpptools/extension/debugAdapters/bin/OpenDebugAD7'
-}
-dap.configurations.cpp = {
-    {
-        name = "Launch file",
-        type = "cppdbg",
-        request = "launch",
-        program = function()
-            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-        end,
-        cwd = '${workspaceFolder}',
-        stopOnEntry = true,
-        setupCommands = {
-            {
-                text = '-enable-pretty-printing',
-                description = 'enable pretty printing',
-                ignoreFailures = false
-            },
-        },
-    },
+-- -- python
+-- require 'dap-python'.setup('~/.virtualenvs/debugpy/bin/python')
 
-}
-dap.configurations.c = dap.configurations.cpp
+-- -- c/c++
+-- dap.adapters.cppdbg = {
+--     type = 'executable';
+--     id = 'cppdbg';
+--     command = os.getenv('HOME') .. '/Code/cpptools/extension/debugAdapters/bin/OpenDebugAD7'
+-- }
+-- dap.configurations.cpp = {
+--     {
+--         name = "Launch file",
+--         type = "cppdbg",
+--         request = "launch",
+--         program = function()
+--             return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+--         end,
+--         cwd = '${workspaceFolder}',
+--         stopOnEntry = true,
+--         setupCommands = {
+--             {
+--                 text = '-enable-pretty-printing',
+--                 description = 'enable pretty printing',
+--                 ignoreFailures = false
+--             },
+--         },
+--     },
+
+-- }
+-- dap.configurations.c = dap.configurations.cpp
 
 
 --- DAP-UI
 local dapui = require("dapui")
+dapui.setup()
 dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open()
 end
