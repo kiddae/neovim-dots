@@ -1,4 +1,4 @@
-return require('packer').startup(function(use)
+return require('packer').startup({ function(use)
     use 'wbthomason/packer.nvim'
 
     -- colors
@@ -7,9 +7,9 @@ return require('packer').startup(function(use)
     use { 'projekt0n/github-nvim-theme', event = 'ColorSchemePre' }
     use { 'shaunsingh/nord.nvim', event = 'ColorSchemePre' }
     use { 'ayu-theme/ayu-vim', event = 'ColorSchemePre' }
-    vim.cmd [[let g:ayucolor = "dark"]]
+    vim.cmd [[let g:ayucolor = "light"]]
     use { 'kaicataldo/material.vim', branch = 'main', event = 'ColorSchemePre' }
-    use { 'Everblush/everblush.vim', event = 'ColorSchemePre' }
+    use { 'Everblush/everblush.nvim', event = 'ColorSchemePre' }
     use { 'chriskempson/base16-vim', event = 'ColorSchemePre' }
 
     -- stuff
@@ -40,7 +40,7 @@ return require('packer').startup(function(use)
     use { 'williamboman/mason-lspconfig.nvim' }
     use { 'williamboman/mason.nvim', config = "require('config.lspconfig')", after = "nvim-lspconfig" }
 
-    use { 'SirVer/ultisnips', ft = 'latex', config = function()
+    use { 'SirVer/ultisnips', ft = 'tex', config = function()
         vim.cmd [[
             let g:UltiSnipsExpandTrigger="<tab>"
             let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -93,7 +93,7 @@ return require('packer').startup(function(use)
     use 'ryanoasis/vim-devicons'
     use 'jiangmiao/auto-pairs'
     use { 'tpope/vim-fugitive', cmd = 'Git' }
-    use { 'lilydjwg/colorizer', config = "vim.cmd [[ let g:colorizer_nomap = 1 ]]" }
+    use { 'norcalli/nvim-colorizer.lua', config = "require'colorizer'.setup()" }
     use { 'skywind3000/asyncrun.vim', config = "require('config.asyncrun')", cmd = "AsyncRun" }
     use { 'mbbill/undotree', cmd = { 'UndoTreeShow', 'UndoTreeToggle' } }
     use { 'fladson/vim-kitty', ft = 'kitty' }
@@ -105,6 +105,13 @@ return require('packer').startup(function(use)
       augroup end
     ]])
 
+end,
 
-
-end)
+    config = {
+        display = {
+            open_fn = function()
+                return require('packer.util').float({ border = 'single' })
+            end
+        },
+        autoremove = true,
+    } })
