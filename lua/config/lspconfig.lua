@@ -106,26 +106,26 @@ require 'lspconfig'.sumneko_lua.setup {
 --     capabilities = capabilities
 -- }
 
-require 'lspconfig'.pylsp.setup {
-    settings = {
-        pylsp = {
-            plugins = {
-                flake8 = {
-                    enabled = true
-                },
-                pylint = {
-                    enabled = true
-                }
-            }
-        }
-    },
-    on_attach = on_attach,
-    flags = {
-        -- This will be the default in neovim 0.7+
-        debounce_text_changes = 150,
-    },
-    capabilities = capabilities
-}
+-- require 'lspconfig'.pylsp.setup {
+--     settings = {
+--         pylsp = {
+--             plugins = {
+--                 flake8 = {
+--                     enabled = true
+--                 },
+--                 pylint = {
+--                     enabled = true
+--                 }
+--             }
+--         }
+--     },
+--     on_attach = on_attach,
+--     flags = {
+--         -- This will be the default in neovim 0.7+
+--         debounce_text_changes = 150,
+--     },
+--     capabilities = capabilities
+-- }
 
 require 'lspconfig'.ltex.setup {
     settings = {

@@ -1,9 +1,4 @@
 local db = require('dashboard')
-vim.api.nvim_set_keymap('n', '<leader>cn', ':DashboardNewFile<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>ff', ':Telescope find_files<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fh', ':Telescope oldfiles<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>vd', ':Telescope find_files cwd=~/.config/nvim <CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>tc', ':Telescope colorscheme<CR>', { noremap = true, silent = true })
 
 db.hide_tabline = false
 db.hide_statusline = false
