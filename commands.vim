@@ -26,7 +26,8 @@ nnoremap <leader>vr :so $MYVIMRC<CR>
 
 nnoremap <S-tab> :bp<CR>
 nnoremap <tab> :bn<CR>
-nnoremap <C-q> :bp<bar>sp<bar>bn<bar>bd<CR>
+" nnoremap <C-q> :bp<bar>sp<bar>bn<bar>bd<CR>
+nnoremap <silent> <expr> <C-q> winnr('$')==1 && tabpagenr('$')==1 && (len(getbufinfo({'buflisted':1})))==1 ? ':bw<CR>:Dashboard<CR>' : ':bw<CR>'
 nnoremap <leader>r :RunSplit ranger<CR>
 nnoremap <leader>t :RunSplit $SHELL<CR>
 nnoremap <leader>T :ExtTerm <CR>
@@ -68,3 +69,10 @@ function! UpdateCommands()
     execute 'autocmd FileType ' . &ft . ' autocmd BufEnter <buffer> if filereadable(".vimrc") | source .vimrc | call UpdateCommands() | endif'
     execute 'autocmd FileType ' . &ft . ' autocmd BufEnter <buffer> call UpdateCommands()'
 endfunction
+
+
+nnoremap <silent> <leader>cn :DashboardNewFile<CR>
+nnoremap <silent> <leader>ff :Telescope find_files<CR>
+nnoremap <silent> <leader>fh :Telescope oldfiles<CR>
+nnoremap <silent> <leader>vd :Telescope find_files cwd=~/.config/nvim <CR>
+nnoremap <silent> <leader>tc :Telescope colorscheme <CR>
