@@ -1,11 +1,11 @@
-require 'nvim-tree'.setup {
+require('nvim-tree').setup({
     respect_buf_cwd = true,
     hijack_cursor = true,
     update_cwd = true,
-    ignore_ft_on_setup = { "dashboard" },
+    -- ignore_ft_on_setup = { "dashboard" },
     view = {
-        hide_root_folder = true,
-        width = 30
+        -- hide_root_folder = true,
+        -- width = 30
     },
     actions = {
         open_file = {
@@ -13,6 +13,7 @@ require 'nvim-tree'.setup {
         }
     },
     renderer = {
+        root_folder_label = false,
         indent_markers = {
             enable = true
         },
@@ -41,9 +42,8 @@ require 'nvim-tree'.setup {
                 },
             },
         },
-        highlight_git = true,
     },
     diagnostics = {
-        enable = false
-    }
-}
+        enable = true
+    },
+})

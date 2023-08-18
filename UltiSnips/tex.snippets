@@ -4,13 +4,13 @@ def isMath():
 endglobal
 
 
-snippet beg "begin{} / end{}" bA
+snippet beg "begin{} / end{}" b
 \begin{$1}
 	${0:${VISUAL}}
 \end{$1}
 endsnippet
 
-snippet emph "\emph{}" i
+snippet em "\emph{}" i
 \emph{${1:${VISUAL}}}$0
 endsnippet
 
@@ -19,6 +19,10 @@ snippet bf "\textbf{}" i
 endsnippet
 
 snippet it "\textit{}" i
+\textit{${1:${VISUAL}}}$0
+endsnippet
+
+snippet tt "\texttt{}" i
 \textit{${1:${VISUAL}}}$0
 endsnippet
 
@@ -53,19 +57,19 @@ snippet ttab "tkz-tab" i
 \end{figure}
 endsnippet
 
-snippet enum "Enumerate" bA
+snippet enum "Enumerate" b
 \begin{enumerate}
 	\item $0
 \end{enumerate}
 endsnippet
 
-snippet item "Itemize" bA
+snippet item "Itemize" b
 \begin{itemize}
 	\item $0
 \end{itemize}
 endsnippet
 
-snippet ite "\item" i
+snippet m "\item" i
 \item $0
 endsnippet
 
@@ -109,7 +113,7 @@ snippet %% "comment" bA
 \end{comment}
 endsnippet
 
-snippet mk "Math" wA
+snippet mm "Math" wA
 $${1:${VISUAL}}$`!p
 if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
     snip.rv = ' '
@@ -118,7 +122,7 @@ else:
 `$2
 endsnippet
 
-snippet dm "Math" wA
+snippet nn "Math" wA
 \[
 ${1:${VISUAL}}
 .\] $0
@@ -134,83 +138,76 @@ snippet '([A-Za-z])_(\d\d)' "auto subscript2" wrA
 endsnippet
 
 context "isMath()"
-snippet sr "^2" iA
-^2
-endsnippet
-
-context "isMath()"
-snippet cb "^3" iA
-^3
-endsnippet
-
-context "isMath()"
 snippet pw "superscript" iA
 ^{${1:${VISUAL}}}$0
 endsnippet
 
+priority 10
 context "isMath()"
-snippet // "Fraction" iA
-\\frac{$1}{$2}$0
+snippet fr "Fraction" iA
+\frac{$1}{$2}$0
 endsnippet
 
+priority 100
 context "isMath()"
-snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
-\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+snippet dfr "Display style Fraction" iA
+\dfrac{$1}{$2}$0
 endsnippet
 
-context "isMath()"
-priority 1000
-snippet '^.*\)/' "() Fraction" wrA
-`!p
-stripped = match.string[:-1]
-depth = 0
-i = len(stripped) - 1
-while True:
-	if stripped[i] == ')': depth += 1
-	if stripped[i] == '(': depth -= 1
-	if depth == 0: break;
-	i -= 1
-snip.rv = stripped[0:i] + "\\frac{" + stripped[i+1:-1] + "}"
-`{$1}$0
-endsnippet
+# context "isMath()"
+# snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)//' "Fraction" wrA
+# \\frac{`!p snip.rv = match.group(1)`}{$1}$0
+# endsnippet
+# 
+# context "isMath()"
+# priority 1000
+# snippet '^.*\)/' "() Fraction" wrA
+# `!p
+# stripped = match.string[:-1]
+# depth = 0
+# i = len(stripped) - 1
+# while True:
+# 	if stripped[i] == ')': depth += 1
+# 	if stripped[i] == '(': depth -= 1
+# 	if depth == 0: break;
+# 	i -= 1
+# snip.rv = stripped[0:i] + "\\frac{" + stripped[i+1:-1] + "}"
+# `{$1}$0
+# endsnippet
+# 
+# context "isMath()"
+# snippet / "Fraction" i
+# \\frac{${VISUAL}}{$1}$0
+# endsnippet
 
 context "isMath()"
-snippet / "Fraction" i
-\\frac{${VISUAL}}{$1}$0
-endsnippet
-
-context "isMath()"
-snippet => "Implies" Ai
+snippet impl "Implies" Ai
 \implies 
 endsnippet
 
-context "isMath()"
-snippet =< "Implied by" Ai
-\impliedby 
-endsnippet
 
 context "isMath()"
-snippet iff "if and only if" i
+snippet iff "if and only if" iA
 \iff
 endsnippet
 
 context "isMath()"
-snippet != "Equals" iA
+snippet ne "Equals" iA
 \ne 
 endsnippet
 
 context "isMath()"
-snippet <= "Less than or equal" iA
+snippet le "Less than or equal" iA
 \le 
 endsnippet
 
 context "isMath()"
-snippet >= "Greater than or equal" iA
+snippet ge "Greater than or equal" iA
 \ge 
 endsnippet
 
 context "isMath()"
-snippet sq "\sqrt{}" i
+snippet rt "\sqrt{}" iA
 \sqrt{${1:${VISUAL}}} $0
 endsnippet
 
@@ -235,62 +232,67 @@ snippet ** "cdot" iA
 endsnippet
 
 context "isMath()"
-snippet ... "cdots" iA
+snippet cdots "cdots" iA
 \cdots 
 endsnippet
 
-snippet ali "Align" bA
+snippet dots "dots" iA
+\ldots
+endsnippet
+
+
+snippet ali "Align" b
 \begin{align*}
 	${1:${VISUAL}}
 .\end{align*}
 endsnippet
 
 context "isMath()"
-snippet == "Aligned equal" iA
-&= $1
-endsnippet
-
-context "isMath()"
 snippet RR "real" iA
-\mathbb{R}
+\mathbf R
 endsnippet
 
 context "isMath()"
 snippet NN "natural" iA
-\mathbb{N}
+\mathbf N
 endsnippet
 
 context "isMath()"
 snippet ZZ "integer" iA
-\mathbb{Z}
+\mathbf Z
 endsnippet
 
 context "isMath()"
 snippet DD "decimal" iA
-\mathbb{D}
+\mathbf D
 endsnippet
 
 context "isMath()"
 snippet QQ "rational" iA
-\mathbb{Q}
+\mathbf Q
 endsnippet
 
 context "isMath()"
-snippet sum "sum" w
-\sum_{$1}^{$2} ${3}
+snippet CC "complex" iA
+\mathbf C
 endsnippet
 
 context "isMath()"
-snippet lim "limit" w
+snippet sum "sum" wA
+\sum_{${1}}^{${2}} $0
+endsnippet
+
+context "isMath()"
+snippet lim "limit" wA
 \lim_{${1} \to ${2}} 
 endsnippet
 
 context "isMath()"
-snippet ooo "infinity" iA
+snippet inf "infinity" iA
 \infty
 endsnippet
 
-snippet alg "algorithmic" bA
+snippet alg "algorithmic" b
 \begin{algorithm}
 	\caption{${1:caption}}\label{alg:${2:caption}}
 	\begin{algorithmic}
@@ -303,29 +305,332 @@ snippet alg "algorithmic" bA
 endsnippet
 
 context "isMath()"
-snippet box "boxed" i
+snippet box "boxed" iA
 \boxed{${1:${VISUAL}}}
 endsnippet
 
 context "isMath()"
-snippet SI "SI unit" iA
+snippet unit "SI unit" iA
 \SI{${1:${VISUAL}}}$0
 endsnippet
 
 context "isMath()"
-snippet mbb "\mathbb{}" iA
-\mathbb{${1:${VISUAL}}}$0
-endsnippet
-
-context "isMath()"
-snippet mcal "\mathcal{}" iA
+snippet cal "\mathcal{}" iA
 \mathcal{${1:${VISUAL}}} $0
 endsnippet
 
-snippet thm "Theorem" bA
-\begin{theorem}[$1]\label{thm:${2:label}}
-	$0
-\end{theorem}
+priority 10
+context "isMath()"
+snippet sf "\mathsf" iA 
+\mathsf{${1:${VISUAL}}} $0 
 endsnippet
+
+context "isMath()"
+snippet fk "\mathfrak" iA
+\mathfrak{${1:${VISUAL}}} $0
+endsnippet
+
+context "isMath()"
+snippet bf "\mathbf" iA 
+\mathbf{${1:${VISUAL}}} $0 
+endsnippet
+
+context "isMath()"
+snippet bb "\mathbb" iA 
+\mathbb{${1:${VISUAL}}} $0 
+endsnippet
+
+context "isMath()"
+snippet scr "\mathscr" iA 
+\mathscr{${1:${VISUAL}}} $0 
+endsnippet
+
+context "isMath()"
+snippet ee "Euler e" iA 
+e^{${1:${VISUAL}}} $0
+endsnippet
+
+context "isMath()"
+snippet aa "alpha" iA
+\alpha
+endsnippet
+
+context "isMath()"
+snippet bb "beta" iA
+\beta
+endsnippet
+
+context "isMath()"
+snippet gg "gamma" iA
+\gamma
+endsnippet
+
+context "isMath()"
+snippet mm "mu" iA
+\mu
+endsnippet
+
+context "isMath()"
+snippet rr "rho" iA
+\rho
+endsnippet
+
+context "isMath()"
+snippet pp "pi" iA
+\pi
+endsnippet
+
+context "isMath()"
+snippet xi "xi" iA
+\xi
+endsnippet
+
+context "isMath()"
+snippet df "differential symbol" iA
+\mathrm d{$1} $0
+endsnippet
+
+context "isMath()"
+snippet pf "partial differential symbol" iA
+\partial {$1} $0
+endsnippet
+
+context "isMath()"
+snippet dv "ordinary derivative" iA
+\dfrac {\mathrm d} {\mathrm d $1} $0
+endsnippet
+
+context "isMath()"
+snippet pv "partial derivative" iA
+\dfrac {\partial} {\partial $1} $0
+endsnippet
+
+context "isMath()"
+snippet ss "subset/eq" iA
+\subseteq
+endsnippet
+
+context "isMath()"
+snippet no "empty set" iA
+\varnothing
+endsnippet
+
+context "isMath()"
+snippet sm "setminus" iA
+\smallsetminus
+endsnippet
+
+priority 10
+context "isMath()"
+snippet uuu "cup" iA
+\cup
+endsnippet
+
+priority 100
+context "isMath()"
+snippet UUU "(big)cup" iA
+\bigcup_{$1} $0
+endsnippet
+
+priority 10
+context "isMath()"
+snippet nnn "cap" iA
+\cap
+endsnippet
+
+priority 100
+context "isMath()"
+snippet NNN "(big)cap" iA
+\bigcap_{$1} $0
+endsnippet
+
+context "isMath()"
+snippet intg "integral" iA
+\int_{$1}^{$2} {$3} \mathrm d{$4} $0
+endsnippet
+
+context "isMath()"
+snippet "bar" "bar" riA
+\overline{$1}$0
+endsnippet
+
+
+context "isMath()"
+snippet "hat" "hat" riA
+\hat{$1}$0
+endsnippet
+
+
+priority 10
+context "isMath()"
+snippet to "\to" iA
+\to
+endsnippet
+
+priority 100
+context "isMath()"
+snippet mto "\mapsto" iA
+\mapsto
+endsnippet
+
+priority 100
+context "isMath()"
+snippet '(?<!\\)(sin|cos|arccot|cot|csc|ln|log|exp|star|perp)' "ln" rwA
+\\`!p snip.rv = match.group(1)`
+endsnippet
+
+priority 200
+context "isMath()"
+snippet '(?<!\\)(arcsin|arccos|arctan|arccot|arccsc|arcsec|pi|zeta)' "ln" rwA
+\\`!p snip.rv = match.group(1)`
+endsnippet
+
+context "isMath()"
+snippet ll "\ell" iA
+\ell
+endsnippet
+
+context "isMath()"
+snippet nabl "\nabla" iA
+\nabla
+endsnippet
+
+priority 10
+context "isMath()"
+snippet set "set" iA
+\\{$1\\} $0
+endsnippet
+
+priority 100
+context "isMath()"
+snippet overset "overset" iA
+\overset{$1}{${2:${VISUAL}}} $0
+endsnippet
+
+context "isMath()"
+snippet sim "sim" iA
+\sim
+endsnippet
+
+context "isMath()"
+snippet cmod "congruence mod ..." iA
+$1 \equiv $2 \pmod{$3} $0
+endsnippet
+
+
+priority 50
+context "isMath()"
+snippet "in " "in" irA
+\in 
+endsnippet
+
+priority 100
+context "isMath()"
+snippet invs "inverse" iA
+^{-1}
+endsnippet
+
+priority 200
+context "isMath()"
+snippet notin "notin" iA
+\notin
+endsnippet
+
+
+context "isMath()"
+snippet sq "square" iA
+^2
+endsnippet
+
+context "isMath()"
+snippet cb "cube" iA
+^3
+endsnippet
+
+context "isMath()"
+snippet compl "complement" iA
+^{\complement}
+endsnippet
+
+context "isMath()"
+snippet trsp "transpose" iA
+^{\intercal}
+endsnippet
+
+context "isMath()"
+snippet __ "subscript" iA
+_{$1}$0
+endsnippet
+
+context "isMath()"
+snippet ceil "ceil" iA
+\left\lceil $1 \right\rceil $0
+endsnippet
+
+context "isMath()"
+snippet floor "floor" iA
+\left\lfloor $1 \right\rfloor $0
+endsnippet
+
+context "isMath()"
+snippet lra "langle rangle" iA
+\left\langle $1 \right\rangle $0
+endsnippet
+
+context "isMath()"
+snippet norm "norm" iA
+\left| $1 \right| $0
+endsnippet
+
+context "isMath()"
+snippet lr( "left( right)" iA
+\left( $1 \right)$0
+endsnippet
+
+context "isMath()"
+snippet lr[ "left[ right]" iA
+\left[ $1 \right]$0
+endsnippet
+
+context "isMath()"
+snippet intvoo "intervalle ouvert-ouvert" iA
+\left] $1, $2 \right[$0
+endsnippet
+
+context "isMath()"
+snippet intvff "intervalle fermé-fermé" iA
+\left[ $1, $2 \right]$0
+endsnippet
+
+context "isMath()"
+snippet intvof "intervalle ouvert-fermé" iA
+\left] $1, $2 \right]$0
+endsnippet
+
+context "isMath()"
+snippet intvfo "intervalle fermé-ouvert" iA
+\left[ $1, $2 \right[$0
+endsnippet
+
+context "isMath()"
+snippet intvent "intervalle entier" iA
+[\![ $1, $2 ]\!]$0
+endsnippet
+
+context "isMath()"
+snippet pmat "pmatrix" iA
+\begin{pmatrix} $1 \end{pmatrix} $0
+endsnippet
+
+context "isMath()"
+snippet bmat "bmatrix" iA
+\begin{bmatrix} $1 \end{bmatrix} $0
+endsnippet
+
+context "isMath()"
+snippet binom "coefficient binomial" iA
+\binom{$1}{$2}$0
+endsnippet
+
 
 # vim:ft=snippets:

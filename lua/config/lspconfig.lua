@@ -1,6 +1,6 @@
 -- List of servers
-local servers = { 'pylsp', 'clangd', 'bashls', 'ltex', 'ocamllsp', 'vimls', 'sumneko_lua', 'texlab',
-    'rust_analyzer' }
+local servers = { 'clangd', 'bashls', 'ocamllsp', 'vimls', 'lua_ls', 'texlab',
+    'rust_analyzer', 'pylyzer', 'ruff_lsp', 'hls' }
 
 require("mason").setup()
 require("mason-lspconfig").setup({ ensure_installed = servers })
@@ -15,12 +15,12 @@ vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
     -- Enable completion triggered by <c-x><c-o>
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- Format on save.
-    vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+    vim.cmd [[autocmd BufWritePre * silent lua vim.lsp.buf.format()]]
 
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -37,7 +37,7 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>r', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -53,7 +53,7 @@ for _, lsp in pairs(servers) do
         capabilities = capabilities
     }
 end
-require 'lspconfig'.sumneko_lua.setup {
+require 'lspconfig'.lua_ls.setup {
     settings = {
         Lua = {
             diagnostics = {
@@ -127,17 +127,17 @@ require 'lspconfig'.sumneko_lua.setup {
 --     capabilities = capabilities
 -- }
 
-require 'lspconfig'.ltex.setup {
-    settings = {
-        ltex = {
-            language = "fr",
-            completionEnabled = "true"
-        }
-    },
-    on_attach = on_attach,
-    flags = {
-        -- This will be the default in neovim 0.7+
-        debounce_text_changes = 150,
-    },
-    capabilities = capabilities
-}
+-- require 'lspconfig'.ltex.setup {
+--     settings = {
+--         ltex = {
+--             language = "fr",
+--             completionEnabled = "true"
+--         }
+--     },
+--     on_attach = on_attach,
+--     flags = {
+--         -- This will be the default in neovim 0.7+
+--         debounce_text_changes = 150,
+--     },
+--     capabilities = capabilities
+-- }

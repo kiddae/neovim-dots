@@ -17,7 +17,7 @@ set smartcase
 
 set noswapfile
 set nobackup
-set undodir=~/.local/share/nvim/undodir
+set undodir=~/usr/share/nvim/undodir
 set undofile
 
 set incsearch
@@ -45,8 +45,8 @@ set foldlevel=99
 
 
 ""colorscheme
-set background=dark
-colorscheme ayu
+set background=light
+colorscheme base16-onedark
 
 "kitty padding
 if $TERM == "xterm-kitty"

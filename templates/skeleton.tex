@@ -1,104 +1,43 @@
-\documentclass[a4paper, french]{paper}
-
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{microtype}
-\usepackage{amsmath, amssymb, amsfonts, mathtools, esvect}
-\usepackage[thref,hyperref,thmmarks,amsmath]{ntheorem}
-\usepackage[toc, header]{appendix}
-\renewcommand{\appendixtocname}{Annexe}
-\usepackage{helvet}
-\usepackage{bold-extra}
-\usepackage[margin=2cm]{geometry}
+\documentclass[headings=standardclasses]{scrartcl}
 \usepackage[french]{babel}
-\usepackage{titlesec}
-% \usepackage[marginpar]{todo}
-% \usepackage{algorithm, algpseudocode}
-% \usepackage{tikz}
-
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymmb, amsthm}
+\usepackage{microtype}
 \usepackage{hyperref}
-\hypersetup{
-    colorlinks=false,
-    linkbordercolor=green,
-    pdfborderstyle={/S/U/W 2}
-}
 
-\titleformat{\section}
-{\Large\sffamily\bfseries\scshape}{\thesection}{1em}{}
-\titleformat{\subsection}
-{\large\sffamily\bfseries\scshape}{\thesubsection}{1em}{}
+\newcommand\NN{\vvmathbb N}
+\newcommand\ZZ{\vvmathbb Z}
+\newcommand\DD{\vvmathbb D}
+\newcommand\QQ{\vvmathbb Q}
+\newcommand\RR{\vvmathbb R}
+\newcommand\CC{\vvmathbb C}
 
-\theoremindent=0.5cm
-\theoremheaderfont{\kern-0.5cm\normalfont\bfseries\scshape}
-\theoremseparator{.}
-\theorempreskip{2em}
-\theorempostskip{2em}
+\newtheorem{thm}[section]{Théorème}
+\newtheorem{prop}{Théorème}[thm]
+\newtheorem{cor}{Corollaire}[thm]
 
-\theoremsymbol{\ensuremath\heartsuit}
-\newtheorem{theorem}{Théorème}
-\theoremsymbol{}
-\newtheorem*{corollary}{Corollaire}
-\newtheorem{lemma}[theorem]{Lemme}
+\theoremstyle{definition}
+\newtheorem{def}[section]{Définition}
+\newtheorem{qs}{Question}
 
-\theoremsymbol{{\rm Q.E.D}}
-\theorembodyfont{\normalfont}
-\newtheorem*{proof}{Démonstration}
+\theoremstyle{remark}
+\newtheorem{rq}[section]{Remarque}
 
-\theoremsymbol{\ensuremath\diamondsuit}
-\newtheorem{definition}{Définition}
-
-\theoremheaderfont{\kern-0.5cm\normalfont\scshape}
-\theoremsymbol{\ensuremath\ast}
-\theorembodyfont{\normalfont}
-\newtheorem{exmp}{Exemple}
-\newtheorem*{remark}{Remarque}
-
-\theoremheaderfont{\normalfont\scshape}
-\theoremstyle{nonumberplain}
-\theorembodyfont{\normalfont}
-\theoremsymbol{\ensuremath\ast}
-\theorempreskip{0em}
-\newtheorem{elmproof}{Éléments de démonstration}
 
 \title{Titre}
-% \subtitle{}
-\author{Louise Nguyen} % \and...
-% \institution{Lycée Pierre de Fermat}
-% \thanks{}
+\author{Louise Nguyen} 
 
 \date{}
-
-%% FIN DU PRÉAMBULE %%
 
 \begin{document}
 
 \maketitle
-\hrule
-\smalltableofcontents
-
-% \subsubsection*{Liste des théorèmes}
-% \theoremlisttype{optname}
-% \begin{small}
-% \listtheorems{theorem,lemma,corollary}
-% \end{small}
-% \subsubsection*{Liste des définitions}
-% \theoremlisttype{allname}
-% \begin{small}
-% \listtheorems{definition}
-% \end{small}
-
 \begin{abstract}
     Résumé
 \end{abstract}
-\hrule\bigskip
-
-%% Vrai début du document %%
 
 \section{Première partie}
-
-% Si besoin d'annexes...
-% \begin{appendices}
-% \end{appendices}
 
 \end{document}
 

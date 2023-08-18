@@ -2,10 +2,9 @@
 lua require('impatient')
 
 lua require('plugins')
-" source ~/.config/nvim/plugins.vim "uses plug.vim
-source ~/.config/nvim/templates.vim "templates
-source ~/.config/nvim/commands.vim "custom commands and keybindings
-source ~/.config/nvim/global.vim "global options
+execute "source " . stdpath("config") . "/templates.vim" 
+execute "source " . stdpath("config"). "/commands.vim" 
+execute "source " . stdpath("config"). "/global.vim" 
 " if filereadable(".vimrc") "source local configurations
 "     source .vimrc
 "     call UpdateCommands()
